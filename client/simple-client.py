@@ -12,6 +12,7 @@ print(certifi.where())
 
 socket.setdefaulttimeout(15)
 ctx = ssl.create_default_context(cafile=certifi.where())
+ctx.load_verify_locations("../ca/root_cert.pem")
 ctx.set_alpn_protocols(['h2'])
 
 s = socket.create_connection((SERVER_NAME, SERVER_PORT))
