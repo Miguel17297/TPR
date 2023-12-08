@@ -1,0 +1,48 @@
+# Criar CA (private key + certificado)
+
+openssl genrsa -out root_key.pem 2048
+
+openssl req \
+    -new \
+    -subj "/CN=Root CA" \
+    -addext "basicConstraints=critical,CA:TRUE" \
+    -key root_key.pem \
+    -out root_csr.pem
+
+openssl x509 \
+    -req \
+    -in root_csr.pem \
+    -copy_extensions copyall \
+    -key root_key.pem \
+    -days 3650 \
+    -out root_cert.pem
+
+
+# Criar Server certificate
+
+openssl genrsa -out server_key.pem 2048
+
+# O CN deve ser igual ao nome do dominio do servidor
+
+
+
+openssl req \
+    -new \
+    -subj "/CN=myserver.io" \
+    -addext "subjectAltName = DNS:myserver.io" \
+    -addext "basicConstraints=critical,CA:FALSE" \
+    -key server_key.pem \
+    -out server_csr.pem
+
+openssl x509 \
+    -req \
+    -in server_csr.pem \
+    -copy_extensions copyall \
+    -CA ca/root_cert.pem \
+    -CAkey ca/root_key.pem \
+    -days 3650 \
+    -out server_cert.pem
+
+# Verificar o conteudo do certificado
+
+openssl x509 -in server_cert.pem -noout -text
