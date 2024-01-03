@@ -1,2 +1,3 @@
 h2
 pip-system-certs
+numpy
