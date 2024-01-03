@@ -11,6 +11,9 @@ __pycache__/
 #pcapng files
 *.pcapng
 
+# .out files
+*.out
+
 # C extensions
 *.so
 

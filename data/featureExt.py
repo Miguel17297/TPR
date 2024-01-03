@@ -6,57 +6,68 @@ from netaddr import IPNetwork, IPAddress, IPSet
 import pyshark
 
 PKT_UPLOAD = 0  # Upload Packet
-PKT_DOWNLOAD = 1 # Download Packet
+PKT_DOWNLOAD = 1  # Download Packet
 
 
 def captureProcess(capture, lengthObsWindow, slidingValue):
-    data = []
+    with open("features.out", "w") as f:
 
-    n_pkts = 0  # number of packets processed
+        n_pkts = 0  # number of packets processed
 
-    for pkt in capture:
+        for pkt in capture:
+            # reset
+            if n_pkts == lengthObsWindow:
 
-        # reset
-        if n_pkts == lengthObsWindow:
-            print(n_pkts)
-            # update counter
-            n_pkts = lengthObsWindow - slidingValue
+                # update counter
+                n_pkts = lengthObsWindow - slidingValue
+                # compute feature
+                features = computeFeatures(data)
+                # save result
+                np.savetxt(f, features.reshape(1, -1))
+                # update data
+                data = data[slidingValue:, ]
 
-            # compute feature
-            computeFeatures(data)
+            if ((pkt_info := pktValidation(pkt)) is not None):
 
-            # update data
-            data = data[slidingValue:, ]
-
-        if ((pkt_info := pktValidation(pkt)) is not None):
-
-            if len(data) == 0:
-
-                data = [*pkt_info]
-
-            else:
-
-                data = np.vstack((data, [*pkt_info]))
-
-            n_pkts = n_pkts + 1
+                if 'data' not in locals():
+                    data = [*pkt_info]
+                else:
+                    data = np.vstack((data, [*pkt_info]))
+                n_pkts = n_pkts + 1
 
 
 def computeFeatures(data):
     # compute metrics
-
     diff_pkts = np.diff(data[:, 1])  # diference between packets
 
     diff_up_up = np.diff(data[data[:, 0] == PKT_UPLOAD][:, 1])  # differente between upload upload
 
     diff_down_down = np.diff(data[data[:, 0] == PKT_DOWNLOAD][:, 1])  # differente between upload upload
 
-    diff_up_down = np.array([row2[1] - row1[1] for row1, row2 in zip(data, data[1:, ])  # differente between upload downloads
-                             if (row1[0] == PKT_UPLOAD and row2[0] == PKT_DOWNLOAD) or (
-                                     row2[0] == PKT_UPLOAD and row1[0] == PKT_DOWNLOAD)])
-
+    diff_up_down = np.array(
+        [row2[1] - row1[1] for row1, row2 in zip(data, data[1:, ])  # differente between upload downloads
+         if (row1[0] == PKT_UPLOAD and row2[0] == PKT_DOWNLOAD) or (
+                 row2[0] == PKT_UPLOAD and row1[0] == PKT_DOWNLOAD)])
 
     # compute features
     # TODO: compute all relevant features (mean, std, median ...)
+
+    for metric in [diff_pkts, diff_up_up, diff_down_down, diff_up_down]:
+
+        m1 = np.mean(metric, axis=0)
+        md1 = np.median(metric, axis=0)
+        std1 = np.std(metric, axis=0)
+        #   p=[75,90,95,98]
+        #   Pr1=np.array(np.percentile(data,p,axis=0))
+
+        features = np.hstack((m1, md1, std1))
+
+        if 'obs_features' not in locals():
+            obs_features = features.copy()
+        else:
+            obs_features = np.hstack((obs_features, features))
+
+    return obs_features
 
 
 def pktValidation(pkt):
@@ -114,7 +125,7 @@ def main():
             snets.append(nn)
         except:
             print('{} is not a network prefix'.format(n))
-    # print(snets)
+
     if len(snets) == 0:
         print("No valid service network prefixes.")
         sys.exit()
@@ -122,22 +133,11 @@ def main():
     global ssnets
     ssnets = IPSet(snets)
 
-    fileInput = args.input
+    file_input = args.input
 
-    if args.output is None:
-        fileOutput = fileInput + "_d.dat"
-    else:
-        fileOutput = args.output
-
-    # print('Sampling interval: {} second'.format(sampDelta))
-
-    outfile = open(fileOutput, 'w')
-
-    capture = pyshark.FileCapture(fileInput, display_filter='tls', keep_packets=False)
+    capture = pyshark.FileCapture(file_input, display_filter='tls', keep_packets=False)
 
     captureProcess(capture, lengthObsWindow, slidingValue)
-
-    outfile.close()
 
 
 if __name__ == '__main__':
