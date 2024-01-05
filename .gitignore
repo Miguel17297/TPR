@@ -8,6 +8,11 @@ __pycache__/
 
 .DS_Store
 
+#pcapng files
+*.pcapng
+
+# .out files
+*.out
 
 # C extensions
 *.so
