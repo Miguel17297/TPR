@@ -38,7 +38,7 @@ class Bot(ABC):
 
         while not self.response_stream_ended:
             self.handle_events()
-        self.soc.close()
+        self.end_stream()
 
     def handle_events(self):
 
@@ -53,20 +53,20 @@ class Bot(ABC):
 
             if isinstance(event, ResponseReceived):
                 self.__handle_data(event.headers, event.stream_id)
+                break
             elif isinstance(event, DataReceived):
-                self.__handle_data(event.data, event.stream_id)
+                self.__handle_data(event.data, event.stream_id, event.flow_controlled_length)
+                break
             elif isinstance(event, StreamEnded):
                 self.open_streams = self.open_streams - 1
                 if self.open_streams == 0:
                     self.response_stream_ended = True
-                    self.__end_stream()
                 break
             elif isinstance(event, SettingsAcknowledged):
                 self.rapid_reset()
+                break
             elif isinstance(event, StreamReset):
                 self.open_streams = self.open_streams - 1
-
-                #raise RuntimeError("Stream reset: %d" % event.error_code)
 
     @abstractmethod
     def rapid_reset(self):
@@ -82,14 +82,16 @@ class Bot(ABC):
         self.conn.send_headers(stream_id, headers, end_stream=False)
         self.soc.sendall(self.conn.data_to_send())
 
-    def __handle_data(self, data, stream_id):
+    def __handle_data(self, data, stream_id,flow_controlled_length=None):
         print('stream_id: {} recieved \n'.format(stream_id), end='')
+        if flow_controlled_length:
+            self.conn.acknowledge_received_data(flow_controlled_length, stream_id)
 
     def end_stream(self):
-
-
+        print(f"Closing Connection")
         self.conn.close_connection()
         self.soc.sendall(self.conn.data_to_send())
+        self.soc.close()
 
     def reset_stream(self, stream_id):
         self.conn.reset_stream(stream_id=stream_id, error_code=0x8)
@@ -123,8 +125,6 @@ class BotLevel1(Bot):
 
 
             self.iterations = self.iterations - 1
-
-            # open_outbound_streams
 
         self.response_stream_ended = True
         self.handle_events()
@@ -160,8 +160,6 @@ class BotLevel2(Bot):
 
             time.sleep(random.randint(2, 5))
 
-            # open_outbound_streams
-
         self.response_stream_ended = True
         self.handle_events()
 
@@ -193,8 +191,6 @@ class BotLevel3(Bot):
             self.iterations = self.iterations - 1
 
             time.sleep(random.randint(2, 10))
-
-            # open_outbound_streams
 
         self.response_stream_ended = True
         self.handle_events()

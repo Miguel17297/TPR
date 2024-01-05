@@ -18,8 +18,8 @@ def main(bot_level, iterations, max_open_streams):
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Pi HTTP server')
-    parser.add_argument('-b', '--bot', type=int, help='Bot Level', choices=[1, 2, 3], default=1)
-    parser.add_argument('-i', '--iterations', type=int, help='Number of iterations', default=5)
+    parser.add_argument('-b', '--bot', type=int, help='Bot Level', choices=[1, 2, 3], default=3)
+    parser.add_argument('-i', '--iterations', type=int, help='Number of iterations', default=2)
     parser.add_argument('-ms', '--max_streams', type=int, help='Max of open concurrent streams', default=10)
     args = parser.parse_args()
 
