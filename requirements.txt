@@ -1,8 +1,5 @@
 h2
-pip-system-certs
 numpy
 certifi
-twisted
-pyOpenSSL
 matplotlib
 sklearn
