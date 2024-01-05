@@ -1,2 +1,4 @@
 h2
-pip-system-certs
+certifi
+netaddr
+pyshark

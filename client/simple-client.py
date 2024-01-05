@@ -31,9 +31,19 @@ headers = [(':method', 'GET'),
 c.send_headers(1, headers, end_stream=True)
 s.sendall(c.data_to_send())
 
+
+nStreams = c._open_streams(remainder=1)
+
+print("nStreams:")
+print(nStreams)
+
+
 body = b''
 response_stream_ended = False
 while not response_stream_ended:
+
+    c.reset_stream(stream_id=1)
+
     data = s.recv(65536 * 1024)
     if not data:
         break
