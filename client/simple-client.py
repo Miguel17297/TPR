@@ -19,7 +19,7 @@ s = socket.create_connection((SERVER_NAME, SERVER_PORT))
 s = ctx.wrap_socket(s, server_hostname=SERVER_NAME)
 
 c = h2.connection.H2Connection()
-c.initiate_connection()
+c.initiate_connection() # estabelece um conexão tcp
 s.sendall(c.data_to_send())
 
 headers = [(':method', 'GET'),

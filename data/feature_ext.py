@@ -17,7 +17,6 @@ def captureProcess(capture, lengthObsWindow, slidingValue):
         for pkt in capture:
             # reset
             if n_pkts == lengthObsWindow:
-
                 # update counter
                 n_pkts = lengthObsWindow - slidingValue
                 # compute feature
@@ -57,8 +56,8 @@ def computeFeatures(data):
         m1 = np.mean(metric, axis=0)
         md1 = np.median(metric, axis=0)
         std1 = np.std(metric, axis=0)
-        #   p=[75,90,95,98]
-        #   Pr1=np.array(np.percentile(data,p,axis=0))
+        p = [75, 90, 95, 98]
+        pr1 = np.array(np.percentile(metric, p, axis=0))
 
         features = np.hstack((m1, md1, std1))
 
