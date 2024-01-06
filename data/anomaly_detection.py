@@ -3,6 +3,7 @@ import scipy.stats as stats
 import scipy.signal as signal
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
+import seaborn
 from sklearn.preprocessing import StandardScaler
 from sklearn.preprocessing import MaxAbsScaler
 from sklearn.decomposition import PCA
@@ -44,6 +45,51 @@ def logplotFeatures(features, oClass, f1index=0, f2index=1):
 
     plt.show()
     waitforEnter()
+
+def validate_model(model_predictions, real_values):
+    # TODO: arranjar classes de dados (real_values -> normal e anamolo) de forma a ser uma lista de 1 (normal) e -1 (anomalo)
+    """
+    Validates model performance
+    :param model_predictions: predictions (anomaly, normal) made by a model for a given data
+    :param real_values: true data classification (equivale Classes[o3testClass[i][0]])
+    """
+    tp, fp, tn, fn = 0, 0, 0,0
+
+    for i in range(len(model_predictions)):
+
+        if model_predictions[i] == 1 and real_values[1] == 1: # true positive
+            tp = tp + 1
+        elif model_predictions[i] == 1 and real_values[1] == -1: # false positives
+            fp = fp + 1
+        elif  model_predictions[i] == -1 and real_values[1] == -1: # true negative
+            tn = tn + 1
+        else:
+            fn = fn + 1
+
+    accuracy = (tp+tn) / (tp+tn+fp+fn)
+    recall = tp / (tp+fn)
+    precision = tp /(tp + fp)
+    f1_score = 2*(recall * precision) / (recall + precision)
+
+    print(f"True Positives: {tp}, False Positives: {fp}, True Negatives: {tn}, False Negatives: {fp} \n")
+    print(f"Acurracy: {accuracy} \n")
+    print(f"Recall: {recall} \n")
+    print(f"Precision: {precision} \n")
+    print(f"F1-Score: {f1_score} \n")
+
+    labels = ["Anomaly", "Normal"]
+    results = np.array([tp, fp, tn, fn])
+
+    seaborn.set(font_scale=1.4)
+    ax = seaborn.heatmap(results, annot=True, cmap="YlGnBu", cbar_kws={'label': 'Scale'})
+
+    ax.set_xticklabels(labels)
+    ax.set_yticklabels(labels)
+
+    ax.set(ylabel="Real Values", xlabel="Predicted Values")
+    plt.show()
+
+
 
 
 ## -- 11 -- ##
@@ -110,26 +156,6 @@ testFeatures_mining = features_mining[pM:, :]
 i3Atest = np.vstack((testFeatures_browsing, testFeatures_yt, testFeatures_mining))
 o3testClass = np.vstack((oClass_browsing[pB:], oClass_yt[pYT:], oClass_mining[pM:]))
 
-## -- 4 -- ##
-print('\n-- Clustreing with K-Means --')
-kmeans = KMeans(n_clusters=3, random_state=0, n_init="auto")
-i3Ctrain = np.vstack((trainFeatures_browsing, trainFeatures_yt, trainFeatures_mining))
-# i3Ctrain = StandardScaler().fit_transform(i3Ctrain)
-labels = kmeans.fit_predict(i3Ctrain)
-
-for i in range(len(labels)):
-    print('Obs: {:2} ({}): K-Means Cluster Label: -> {}'.format(i, Classes[o3testClass[i][0]], labels[i]))
-
-## -- 5 -- ##
-print('\n-- Clustreing with DBSCAN --')
-i3Ctrain = np.vstack((trainFeatures_browsing, trainFeatures_yt, trainFeatures_mining))
-i3Ctrain = StandardScaler().fit_transform(i3Ctrain)
-db = DBSCAN(eps=0.5, min_samples=10).fit(i3Ctrain)
-labels = db.labels_
-
-for i in range(len(labels)):
-    print('Obs: {:2} ({}): DBSCAN Cluster Label: -> {}'.format(i, Classes[o3testClass[i][0]], labels[i]))
-
 ## -- 7 -- ##
 
 i2train = np.vstack((trainFeatures_browsing, trainFeatures_yt))
@@ -149,16 +175,14 @@ AnomalyThreshold = 10
 
 print('\n-- Anomaly Detection based on Centroids Distances --')
 nObsTest, nFea = i3Atest.shape
+results = np.ones(nObsTest)
 for i in range(nObsTest):
     x = i3Atest[i]
     dists = [distance(x, centroids[0]), distance(x, centroids[1])]
     if min(dists) > AnomalyThreshold:
-        result = "Anomaly"
+        results[i] = -1
     else:
-        result = "OK"
-
-    print('Obs: {:2} ({}): Normalized Distances to Centroids: [{:.4f},{:.4f}] -> Result -> {}'.format(i, Classes[
-        o3testClass[i][0]], *dists, result))
+        results[i] = 1
 
 ## -- 8 -- ##
 
@@ -182,43 +206,5 @@ for i in range(nObsTest):
     print('Obs: {:2} ({:<8}): Kernel Linear->{:<10} | Kernel RBF->{:<10} | Kernel Poly->{:<10}'.format(i, Classes[
         o3testClass[i][0]], AnomResults[L1[i]], AnomResults[L2[i]], AnomResults[L3[i]]))
 
-## -- 10 -- #
-print('\n-- Classification based on Support Vector Machines --')
 
-i3train = np.vstack((trainFeatures_browsing, trainFeatures_yt, trainFeatures_mining))
-i3Ctest = np.vstack((testFeatures_browsing, testFeatures_yt, testFeatures_mining))
 
-svc = svm.SVC(kernel='linear').fit(i3train, o3trainClass)
-rbf_svc = svm.SVC(kernel='rbf').fit(i3train, o3trainClass)
-poly_svc = svm.SVC(kernel='poly', degree=2).fit(i3train, o3trainClass)
-
-L1 = svc.predict(i3Ctest)
-L2 = rbf_svc.predict(i3Ctest)
-L3 = poly_svc.predict(i3Ctest)
-print('\n')
-
-nObsTest, nFea = i3Ctest.shape
-for i in range(nObsTest):
-    print('Obs: {:2} ({:<8}): Kernel Linear->{:<10} | Kernel RBF->{:<10} | Kernel Poly->{:<10}'.format(i, Classes[
-        o3testClass[i][0]], Classes[L1[i]], Classes[L2[i]], Classes[L3[i]]))
-
-## -- 12 -- ##
-from sklearn.neural_network import MLPClassifier
-
-print('\n-- Classification based on Neural Networks --')
-i3train = np.vstack((trainFeatures_browsing, trainFeatures_yt, trainFeatures_mining))
-i3Ctest = np.vstack((testFeatures_browsing, testFeatures_yt, testFeatures_mining))
-
-scaler = MaxAbsScaler().fit(i3train)
-i3trainN = scaler.transform(i3train)
-i3CtestN = scaler.transform(i3Ctest)
-
-alpha = 1
-max_iter = 100000
-clf = MLPClassifier(solver='lbfgs', alpha=alpha, hidden_layer_sizes=(20,), max_iter=max_iter)
-clf.fit(i3trainN, o3trainClass)
-LT = clf.predict(i3CtestN)
-
-nObsTest, nFea = i3CtestN.shape
-for i in range(nObsTest):
-    print('Obs: {:2} ({:<8}): Classification->{}'.format(i, Classes[o3testClass[i][0]], Classes[LT[i]]))
