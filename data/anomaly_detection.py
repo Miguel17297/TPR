@@ -18,7 +18,7 @@ import warnings
 warnings.filterwarnings('ignore')
 
 
-def waitforEnter(fstop=False):
+def waitforEnter(fstop=True):
     if fstop:
         if sys.version_info[0] == 2:
             raw_input("Press ENTER to continue.")
@@ -29,7 +29,7 @@ def waitforEnter(fstop=False):
 ## -- 3 -- ##
 def plotFeatures(features, oClass, f1index=0, f2index=1):
     nObs, nFea = features.shape
-    colors = ['b', 'g', 'r']
+    colors = ['b', 'r']
     for i in range(nObs):
         plt.plot(features[i, f1index], features[i, f2index], 'o' + colors[int(oClass[i])])
 
@@ -107,104 +107,134 @@ def distance(c, p):
 
 
 ########### Main Code #############
-Classes = {0: 'Browsing', 1: 'YouTube', 2: 'Mining'}
+Classes = {0: 'Normal', 1: 'Anomaly'}
 plt.ion()
 nfig = 1
 
 ## -- 2 -- ##
-features_browsing = np.loadtxt("BrowsingAllF.dat")
-features_yt = np.loadtxt("YouTubeAllF.dat")
-features_mining = np.loadtxt("MiningAllF.dat")
+# features_bot1 = np.loadtxt("bot1.dat")
+# features_bot2 = np.loadtxt("bot2.dat")
+features_bot3 = np.loadtxt("bot3.dat")
+features_normal = np.loadtxt("features.out")
 
-oClass_browsing = np.ones((len(features_browsing), 1)) * 0
-oClass_yt = np.ones((len(features_yt), 1)) * 1
-oClass_mining = np.ones((len(features_mining), 1)) * 2
+# oClass_bot1 = np.ones((len(features_bot1), 1)) * 1
 
-features = np.vstack((features_yt, features_browsing, features_mining))
-oClass = np.vstack((oClass_yt, oClass_browsing, oClass_mining))
+oClass_bot3= np.ones((len(features_bot3), 1)) * 1
+print(features_bot3.shape)
+# oClass_bot1 = np.ones((len(features_bot3), 1)) * 0
 
+oClass_normal = np.ones((len(features_normal), 1)) * 0
+print(features_normal.shape)
+
+
+
+features = np.vstack((features_normal, features_bot3))
+
+oClass= np.vstack(( oClass_normal,oClass_bot3))
+
+Obs, nFea = features_bot3.shape
 print('Train Silence Features Size:', features.shape)
-plt.figure(2)
-plotFeatures(features, oClass, 0, 6)
-plt.figure(3)
-plotFeatures(features, oClass, 2, 8)
-plt.figure(4)
-plotFeatures(features, oClass, 5, 15)
+
+plt.figure(1)
+plotFeatures(features, oClass, 0,nFea-1)
+
+# sys.exit(0)
+
 
 ## -- 3 -- ##
 #:i
-percentage = 0.5
-pB = int(len(features_browsing) * percentage)
-trainFeatures_browsing = features_browsing[:pB, :]
-pYT = int(len(features_yt) * percentage)
-trainFeatures_yt = features_yt[:pYT, :]
-pM = int(len(features_mining) * percentage)
-trainFeatures_mining = features_mining[:pYT, :]
+percentage = 0.7
+# pB = int(len(features_bot1) * percentage)
+# trainfeatures_bot1 = features_bot1[:pB, :]
+# pYT = int(len(features_bot2) * percentage)
+# trainfeatures_bot2 = features_bot2[:pYT, :]
+pb3 = int(len(features_bot3) * percentage)
+trainfeatures_bot3 = features_bot3[:pb3 :]
+Pn = int(len(features_normal)*percentage)
+trainfeatures_normal = features_normal[: Pn:]
+test_features_normal = features_normal[Pn: ,:]
+test_features_bot3 = features_bot3[pb3: ,:]
 
-i2train = np.vstack((trainFeatures_browsing, trainFeatures_yt))
-o2trainClass = np.vstack((oClass_browsing[:pB], oClass_yt[:pYT]))
+# i2train = np.vstack((trainfeatures_bot1, trainfeatures_bot2))
+# o2trainClass = np.vstack((oClass_browsing[:pB], oClass_yt[:pYT]))
+oNormal_trainClass = oClass_normal[: Pn:]
 
 #:ii
-i3Ctrain = np.vstack((trainFeatures_browsing, trainFeatures_yt, trainFeatures_mining))
-o3trainClass = np.vstack((oClass_browsing[:pB], oClass_yt[:pYT], oClass_mining[:pM]))
+# inoCtrain = np.trainfeatures_normal
+# o3trainClass = np.vstack((oClass_normal[:Pn]))
 
 #:iii
-testFeatures_browsing = features_browsing[pB:, :]
-testFeatures_yt = features_yt[pYT:, :]
-testFeatures_mining = features_mining[pM:, :]
+# testfeatures_bot1 = features_bot1[pB:, :]
+# testfeatures_bot2 = features_bot2[pYT:, :]
+# testfeatures_bot3 = features_bot3[pb3:, :]
 
-i3Atest = np.vstack((testFeatures_browsing, testFeatures_yt, testFeatures_mining))
-o3testClass = np.vstack((oClass_browsing[pB:], oClass_yt[pYT:], oClass_mining[pM:]))
+# i3Atest = np.vstack((testfeatures_bot1, testfeatures_bot2, testfeatures_bot3))
+# o3testClass = np.vstack((oClass_browsing[pB:], oClass_yt[pYT:], oClass_mining[pM:]))
 
 ## -- 7 -- ##
 
-i2train = np.vstack((trainFeatures_browsing, trainFeatures_yt))
+# i2train = np.vstack((trainfeatures_bot1, trainfeatures_bot2))
 # scaler = MaxAbsScaler().fit(i2train)
 # i2train=scaler.transform(i2train)
 
-centroids = {}
-for c in range(2):  # Only the first two classes
-    pClass = (o2trainClass == c).flatten()
-    centroids.update({c: np.mean(i2train[pClass, :], axis=0)})
+centroids = 0
+
+pClass = oNormal_trainClass.flatten()
+print(pClass)
+centroids=np.mean(trainfeatures_normal,axis=0)
 print('All Features Centroids:\n', centroids)
 
-i3Atest = np.vstack((testFeatures_browsing, testFeatures_yt, testFeatures_mining))
-# i3Atest=scaler.transform(i3Atest)
+i3Atest = np.vstack((test_features_bot3,test_features_normal))
+# i3Atest= scaler.transform(trainfeatures_bot3)
 
-AnomalyThreshold = 10
+AnomalyThreshold = [5,10,3,7]
 
-print('\n-- Anomaly Detection based on Centroids Distances --')
-nObsTest, nFea = i3Atest.shape
-results = np.ones(nObsTest)
-for i in range(nObsTest):
-    x = i3Atest[i]
-    dists = [distance(x, centroids[0]), distance(x, centroids[1])]
-    if min(dists) > AnomalyThreshold:
-        results[i] = -1
-    else:
-        results[i] = 1
+o3testClass = np.vstack((oClass_bot3,oClass_normal))
+print(o3testClass)
+
+for j in  AnomalyThreshold:
+    print('\n-- Anomaly Detection based on Centroids Distances --')
+    nObsTest, nFea = i3Atest.shape
+    results = np.ones(nObsTest)
+    for i in range(nObsTest):
+        x = i3Atest[i]
+        dists = [distance(x, centroids)]
+        if min(dists) > j:
+            results[i] = -1
+        else:
+            results[i] = 1
+
+        print('Obs: {:2} ({}): Normalized Distances to Centroids: [{:.4f}] -> Result -> {}'.format(i,Classes[o3testClass[i][0]],*dists,results[i]))
+        # print(i)
+        # print(Classes[o3testClass[i][0]])
+        # print(*dists)
+        # print(results[i])
+            
+
 
 ## -- 8 -- ##
 
 print('\n-- Anomaly Detection based on One Class Support Vector Machines--')
-i2train = np.vstack((trainFeatures_browsing, trainFeatures_yt))
-i3Atest = np.vstack((testFeatures_browsing, testFeatures_yt, testFeatures_mining))
+i2train = trainfeatures_normal
+i3Atest = np.vstack((test_features_bot3,test_features_normal ))
 
-nu = 0.1
-ocsvm = svm.OneClassSVM(gamma='scale', kernel='linear', nu=nu).fit(i2train)
-rbf_ocsvm = svm.OneClassSVM(gamma='scale', kernel='rbf', nu=nu).fit(i2train)
-poly_ocsvm = svm.OneClassSVM(gamma='scale', kernel='poly', nu=nu, degree=2).fit(i2train)
+nu = [0.1,0.4,0.5,0.8]
 
-L1 = ocsvm.predict(i3Atest)
-L2 = rbf_ocsvm.predict(i3Atest)
-L3 = poly_ocsvm.predict(i3Atest)
+for j in nu:
+    ocsvm = svm.OneClassSVM(gamma='scale', kernel='linear', nu=j).fit(i2train)
+    rbf_ocsvm = svm.OneClassSVM(gamma='scale', kernel='rbf', nu=j).fit(i2train)
+    poly_ocsvm = svm.OneClassSVM(gamma='scale', kernel='poly', nu=j, degree=2).fit(i2train)
 
-AnomResults = {-1: "Anomaly", 1: "OK"}
+    L1 = ocsvm.predict(i3Atest)
+    L2 = rbf_ocsvm.predict(i3Atest)
+    L3 = poly_ocsvm.predict(i3Atest)
 
-nObsTest, nFea = i3Atest.shape
-for i in range(nObsTest):
-    print('Obs: {:2} ({:<8}): Kernel Linear->{:<10} | Kernel RBF->{:<10} | Kernel Poly->{:<10}'.format(i, Classes[
-        o3testClass[i][0]], AnomResults[L1[i]], AnomResults[L2[i]], AnomResults[L3[i]]))
+    AnomResults = {-1: "Anomaly", 1: "OK"}
+
+    nObsTest, nFea = i3Atest.shape
+    for i in range(nObsTest):
+        print('Obs: {:2} ({:<8}): Kernel Linear->{:<10} | Kernel RBF->{:<10} | Kernel Poly->{:<10}'.format(i, Classes[
+            o3testClass[i][0]], AnomResults[L1[i]], AnomResults[L2[i]], AnomResults[L3[i]]))
 
 
 
