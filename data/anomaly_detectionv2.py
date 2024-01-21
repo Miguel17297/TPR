@@ -25,8 +25,8 @@ def compute(features_normal, features_bot):
 
     train_normal, test_normal = dataset_division(features_normal)
     train_bot, test_bot = dataset_division(features_bot)
-    labels_normal_test = np.ones((len(test_normal), 1)) * 0
-    labels_bot_test = np.ones((len(test_bot), 1)) * 0
+    labels_normal_test = np.ones((len(test_normal), 1)) * 1
+    labels_bot_test = np.ones((len(test_bot), 1)) * -1
 
     test_data = np.vstack((test_normal, test_bot))
     test_labels = np.vstack((labels_normal_test, labels_bot_test))

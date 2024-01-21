@@ -41,28 +41,31 @@ def validate_model(model_predictions, real_values):
     :param real_values: true data classification (equivale Classes[o3testClass[i][0]])
     """
 
-    assert len(model_predictions) == len(real_values)
+    assert model_predictions.shape == real_values.shape
+
     tp, fp, tn, fn = 0, 0, 0, 0
 
     for i in range(len(model_predictions)):
 
-        if model_predictions[i][0] == 1 and real_values[i][0] == 1:  # true positive
+        if model_predictions[i][0] == -1 and real_values[i][0] == -1:  # true positive
             tp = tp + 1
-        elif model_predictions[i][0] == 1 and real_values[i][0] == 0:  # false positives
+        elif model_predictions[i][0] == -1 and real_values[i][0] == 1:  # false positives
             fp = fp + 1
-        elif model_predictions[i][0] == -1 and real_values[i][0] == 0:  # true negative
+        elif model_predictions[i][0] == 1 and real_values[i][0] == 1:  # true negative
             tn = tn + 1
-
         else:
             fn = fn + 1
 
-    accuracy = (tp + tn) / (tp + tn + fp + fn)
-    recall = tp / (tp + fn)
-    precision = tp / (tp + fp)
-    if recall + precision == 0:
-        f1_score = 0
-    else:
-        f1_score = 2 * (recall * precision) / (recall + precision)
+    accuracy = (tp + tn) / (tp + tn + fp + fn) if (tp + tn + fp + fn) > 0 else 0
+
+    recall_den = (tp + fn)
+    recall = tp / recall_den if recall_den > 0 else 0
+
+    precision_den = (tp + fp)
+    precision = tp / precision_den if precision_den > 0 else 0
+
+    f1_score_den = (recall + precision)
+    f1_score = 2 * (recall * precision) / f1_score_den if f1_score_den > 0 else 0
 
     print(f"True Positives: {tp}, False Positives: {fp}, True Negatives: {tn}, False Negatives: {fp} \n")
     print(f"Acurracy: {accuracy} \n")
@@ -103,4 +106,4 @@ def distance(c, p):
             s += np.square((p[i] - c[i]) / c[i])
             n += 1
 
-    return (np.sqrt(s / n))
+    return np.sqrt(s / n)

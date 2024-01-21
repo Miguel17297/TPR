@@ -1,5 +1,6 @@
 from abc import ABC, abstractmethod
 from sklearn import svm
+from sklearn.ensemble import IsolationForest as IForest
 from utils import validate_model, distance
 import itertools as iter
 import numpy as np
@@ -7,7 +8,7 @@ import numpy as np
 class Model(ABC):
 
     def __init__(self, model):
-        self.__model = model
+         self.__model = None
 
     @property
     def model(self):
@@ -26,10 +27,11 @@ class Model(ABC):
 class OneClassSVM(Model):
 
     def __init__(self, kernel, nu=0.5):
+        model = svm.OneClassSVM(gamma='scale', kernel=kernel, nu=nu)
+        super().__init__(model)
         self.__kernel = kernel
         self.__nu = 0.5
-        model = svm.OneClassSVM(gamma='scale', kernel=kernel, nu=nu)
-        super.__init__(model)
+
 
     @property
     def kernel(self):
@@ -37,7 +39,7 @@ class OneClassSVM(Model):
 
     @property
     def nu(self):
-        return self.nu
+        return self.__nu
 
     def train(self, data):
         self.model.fit(data)
@@ -69,8 +71,8 @@ class OneClassSVM(Model):
 
 class IsolationForest(Model):
     def __init__(self, max_samples=100, random_state=0):
-        model = IsolationForest(max_samples=max_samples, random_state=random_state)
-        super.__init__(model)
+        model = IForest(max_samples=max_samples, random_state=random_state)
+        super().__init__(model)
         self.__max_samples = max_samples
         self.__random_state = random_state
 
@@ -91,7 +93,7 @@ class IsolationForest(Model):
 
         for ms, rs in [*iter.product(max_samples, random_state)]:
 
-            clf = IsolationForest(max_samples=ms, random_state=rs)
+            clf = IForest(max_samples=ms, random_state=rs)
             clf.fit(train)
             res= clf.predict(test)
             score = validate_model(res.reshape(-1,1), test_labels)
