@@ -5,7 +5,7 @@ from sklearn.decomposition import PCA
 from models import OneClassSVM, IsolationForest
 import itertools
 import warnings
-from utils import distance, dataset_division
+from utils import distance, dataset_division,validate_model
 import os
 
 warnings.filterwarnings('ignore')
