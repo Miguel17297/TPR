@@ -16,6 +16,7 @@ import itertools
 import time
 import sys
 import warnings
+import os
 
 warnings.filterwarnings('ignore')
 
@@ -153,53 +154,56 @@ print('Train Silence Features Size:', features.shape)
 # plt.figure(3)
 # plotFeatures(features, oClass, 0,nFea-3)
 '''i need to make all comvbination of features and plot them'''
-comb= [*(itertools.combinations(range(nFea),2))]
+comb = [*(itertools.combinations(range(nFea), 2))]
 
 # for i, j in combinations:
 #     plt.figure(nfig)
 #     plotFeatures(features, oClass, i, j)
 #     nfig += 1
 
+f_labels = np.loadtxt("feature_labels.csv",
+                      delimiter=",", dtype=str)
 
-    
+print(f_labels)
+
 # Create a grid of subplots based on the number of combinations
 num_combinations = len(comb)
-num_cols = 3  # You can adjust the number of columns as needed
-num_rows = int(np.ceil(num_combinations / num_cols))
+num_cols = 7  # You can adjust the number of columns as needed
+num_rows = 6
 
 # Set the number of subplots per file
-subplots_per_file = 4  # You can adjust this based on your preference
+subplots_per_file = 42  # You can adjust this based on your preference
 
 # Create a list of combinations for each file
-combinations_per_file = [comb[i:i + subplots_per_file] for i in range(0, len(comb), subplots_per_file)]
+# combinations_per_file = [comb[i:i + subplots_per_file] for i in range(0, len(comb), subplots_per_file)]
 
 # Iterate over combinations and create separate files
-for file_idx, combinations in enumerate(combinations_per_file):
+for file_idx, combinations in enumerate(
+        [comb[i:i + subplots_per_file] for i in range(0, len(comb), subplots_per_file)]):
     # Create a new figure with subplots
-    fig, axes = plt.subplots(num_rows, num_cols, figsize=(8, 4 * num_rows))  # Adjust the width and height as needed
+    fig, axes = plt.subplots(num_rows, num_cols, figsize=(30, 10))  # Adjust the width and height as needed
 
     # Plot each combination in a subplot
     for idx, (i, j) in enumerate(combinations):
         row = idx // num_cols
         col = idx % num_cols
         axes[row, col].scatter(features[:, i], features[:, j], c=oClass.flatten(), cmap='viridis')
-        axes[row, col].set_title(f'Features {i} vs {j}')
+        axes[row, col].set_title(f'{f_labels[i]} vs {f_labels[j]}')
 
     # Adjust layout to prevent overlapping
     plt.tight_layout()
 
+    results_folder = os.path.join(os.path.dirname(os.getcwd()), "results")
+    if not os.path.exists(results_folder):
+        os.makedirs(results_folder)
+
+    f_name = os.path.join(results_folder,
+                          f'combined_feature_plots_{file_idx + 1}.png')
+
     # Save the current figure
-    plt.savefig(f'combined_feature_plots_{file_idx + 1}.png')
-
-    # Close the f
-    
-
-
-
-
+    plt.savefig(f_name)
 
 sys.exit(0)
-
 
 ## -- 3 -- ##
 #:i
@@ -454,7 +458,3 @@ for j in nu:
             print(best)
 
 ### Compare models ###
-
-
-
-
