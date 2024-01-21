@@ -52,7 +52,7 @@ class OneClassSVM(Model):
         best_nu = self.nu
         model = self.model
         for v in nu:
-
+            print(f'\nOneClassSvm {self.kernel} with nu={v}')
             m = svm.OneClassSVM(gamma='scale', kernel='linear', nu=v).fit(train)
             res = m.predict(test)
 
@@ -92,6 +92,7 @@ class IsolationForest(Model):
         model = self.model
 
         for ms, rs in [*iter.product(max_samples, random_state)]:
+            print(f'\nIsolation Forest with max_samples={ms} and random_state={rs}')
 
             clf = IForest(max_samples=ms, random_state=rs)
             clf.fit(train)
@@ -108,7 +109,7 @@ class IsolationForest(Model):
         self.__model = model
 
         print(
-            f"Best f1-score: {best_score} -> Isolation Forest with max_samples={self.max_samples} and random_state={self.random_state} \n")
+            f'Best f1-score: {best_score} -> Isolation Forest with max_samples={self.max_samples} and random_state={self.random_state} \n')
 
 
 # class StatisticalModel(Model):

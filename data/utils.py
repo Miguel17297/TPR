@@ -34,7 +34,6 @@ def logplotFeatures(features, oClass, f1index=0, f2index=1):
 
 
 def validate_model(model_predictions, real_values):
-    # TODO: arranjar classes de dados (real_values -> normal e anamolo) de forma a ser uma lista de 1 (normal) e -1 (anomalo)
     """
     Validates model performance
     :param model_predictions: predictions (anomaly, normal) made by a model for a given data
@@ -67,24 +66,25 @@ def validate_model(model_predictions, real_values):
     f1_score_den = (recall + precision)
     f1_score = 2 * (recall * precision) / f1_score_den if f1_score_den > 0 else 0
 
-    print(f"True Positives: {tp}, False Positives: {fp}, True Negatives: {tn}, False Negatives: {fp} \n")
-    print(f"Acurracy: {accuracy} \n")
-    print(f"Recall: {recall} \n")
-    print(f"Precision: {precision} \n")
-    print(f"F1-Score: {f1_score} \n")
+    print(f"\n\tTrue Positives: {tp}, False Positives: {fp}, True Negatives: {tn}, False Negatives: {fp}")
+    print(f"\tAcurracy: {accuracy}")
+    print(f"\tRecall: {recall}")
+    print(f"\tPrecision: {precision}")
+    print(f"\tF1-Score: {f1_score}")
 
     labels = ["Anomaly", "Normal"]
     results = np.array([tp, fp, tn, fn])
+    results = results.reshape(2, 2)
 
     seaborn.set(font_scale=1.4)
-    # TODO : fix heat map
-    # ax = seaborn.heatmap(results, annot=True, cmap="YlGnBu", cbar_kws={'label': 'Scale'})
+    ax = seaborn.heatmap(results , annot=True, cmap="YlGnBu", cbar_kws={'label': 'Scale'})
 
-    # ax.set_xticklabels(labels)
-    # ax.set_yticklabels(labels)
+    ax.set_xticklabels(labels)
+    ax.set_yticklabels(labels)
 
-    # ax.set(ylabel="Real Values", xlabel="Predicted Values")
-    # plt.show()
+    ax.set(xlabel="Real Values", ylabel="Predicted Values")
+    plt.show()
+
     return f1_score
 
 
