@@ -108,18 +108,18 @@ class IsolationForest(Model):
         self.__max_samples = best_ms
         self.__model = model
 
-        print(
-            f'Best f1-score: {best_score} -> Isolation Forest with max_samples={self.max_samples} and random_state={self.random_state} \n')
+        print(f'Best f1-score: {best_score} -> Isolation Forest with max_samples={self.max_samples} and random_state={self.random_state} \n')
+
 
 
 # class StatisticalModel(Model):
-#
+
 #     def __init__(self, kernel, nu=0.5):
 #         pass
-#
+
 #     def train(self, data):
 #         centroids = np.mean(data, axis=0)
-#
+
 #     def test(self, test):
 #         nObsTest, nFea = data.shape
 #         results = np.ones(nObsTest)
@@ -130,7 +130,6 @@ class IsolationForest(Model):
 #                 results[i] = -1
 #             else:
 #                 results[i] = 1
-#
+
 #     def hyper_tunning(self, train, test, test_labels):
 #         pass
-

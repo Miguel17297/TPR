@@ -8,7 +8,7 @@ from utils import validate_model, distance, waitforEnter, plotFeatures, dataset_
 
 warnings.filterwarnings('ignore')
 
-# TODO: Testar o codigo
+
 
 def compute(features_normal, features_bot):
     # TODO: Colocar aqui o codigo dos graficos para cada um dos pares de features
@@ -41,9 +41,9 @@ def compute(features_normal, features_bot):
     print('All Features Centroids:\n', centroids)
 
     AnomalyThreshold = [5, 10, 3, 7]
-
+    print('\n-- Anomaly Detection based on Centroids Distances --')
     for j in AnomalyThreshold:
-        print('\n-- Anomaly Detection based on Centroids Distances --')
+        print(f'Anomaly Threshold: {j}')
         nObsTest, nFea = test_data.shape
         results = np.ones(nObsTest)
         for i in range(nObsTest):
@@ -54,11 +54,12 @@ def compute(features_normal, features_bot):
             else:
                 results[i] = 1
 
-    # TODO: Codigo de validar o modelo estatistico
-    """
-        Codigo de validar o modelo estatistico
-
-    """
+        real_values = test_labels
+        f1_score = validate_model(results.reshape(-1, 1), real_values)
+        
+    
+    
+    print('-----------------------------------------------------------------\n')
 
     print('\n-- Anomaly Detection based on One Class Support Vector Machines--')
 
@@ -73,6 +74,8 @@ def compute(features_normal, features_bot):
     poly_ocsvm = OneClassSVM("poly")
     poly_ocsvm.hyper_tunning(train_normal, test_data, test_labels, nu)
 
+    print('-----------------------------------------------------------------\n')
+    
     print('\n-- Anomaly Detection based on Isolation Forest--')
 
     max_samples = [100, 200, 300, 400]
@@ -104,6 +107,7 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Anomaly detection')
     parser.add_argument('-b', '--bot', type=int, help='Bot Level', choices=[1, 2, 3], default=3)
     parser.add_argument('--pca', type=bool, help='Use pca', default=False)
+    parser.add_argument('-o', '--output', type=str,nargs='?', help='Output file',required= False,default='modelValidation.txt')
     args = parser.parse_args()
 
     bot = args.bot
