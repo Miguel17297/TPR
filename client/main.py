@@ -1,5 +1,5 @@
 import argparse
-from bot import BotLevel1, BotLevel2, BotLevel3
+from bots import BotLevel1, BotLevel2, BotLevel3
 
 
 def main(bot_level, iterations, max_open_streams):
