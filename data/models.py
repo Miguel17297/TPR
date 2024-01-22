@@ -8,7 +8,7 @@ import numpy as np
 class Model(ABC):
 
     def __init__(self, model):
-         self.__model = None
+         self.__model = model
 
     @property
     def model(self):
@@ -17,8 +17,9 @@ class Model(ABC):
     def train(self, data):
         self.model.fit(data)
 
-    def test(self, test):
+    def predict(self, test):
         return self.model.predict(test)
+
 
     @abstractmethod
     def hyper_tunning(self,train, test, test_labels):
@@ -44,7 +45,7 @@ class OneClassSVM(Model):
     def train(self, data):
         self.model.fit(data)
 
-    def test(self, test):
+    def predict(self, test):
         return self.model.predict(test)
 
     def hyper_tunning(self, train, test, test_labels, nu):
@@ -110,26 +111,63 @@ class IsolationForest(Model):
 
         print(f'Best f1-score: {best_score} -> Isolation Forest with max_samples={self.max_samples} and random_state={self.random_state} \n')
 
+class StatisticalModel(Model):
 
+    def __init__(self, threshold=5):
+        self.__threshold = threshold
+        self.__centroids = None
 
-# class StatisticalModel(Model):
+    @property
+    def threshold(self):
+        return self.__threshold
 
-#     def __init__(self, kernel, nu=0.5):
-#         pass
+    @property
+    def centroids(self):
+        return self.__centroids
 
-#     def train(self, data):
-#         centroids = np.mean(data, axis=0)
+    def train(self, data):
+        self.__centroids = np.mean(data, axis=0)
 
-#     def test(self, test):
-#         nObsTest, nFea = data.shape
-#         results = np.ones(nObsTest)
-#         for i in range(nObsTest):
-#             x = data[i]
-#             dists = [distance(x, centroids)]
-#             if min(dists) > j:
-#                 results[i] = -1
-#             else:
-#                 results[i] = 1
+    def predict(self, test):
+        n_obs, _ = test.shape
+        results = np.ones(n_obs)
+        for i in range(n_obs):
+            x = test[i]
+            dists = [distance(x, self.centroids)]
+            if min(dists) > self.threshold:
+                results[i] = -1
+            else:
+                results[i] = 1
 
-#     def hyper_tunning(self, train, test, test_labels):
-#         pass
+        return results
+
+    def hyper_tunning(self, train, test, test_labels, thresholds):
+
+        if self.centroids is None:
+            self.train(train)
+
+        best_score = 0
+        best_threshold = self.threshold
+
+        print('\n-- Anomaly Detection based on Centroids Distances --')
+        for t in thresholds:
+            print(f'Anomaly Threshold: {t}')
+            n_obs, _ = test.shape
+            results = np.ones(n_obs)
+            for i in range(n_obs):
+                x = test[i]
+                dists = [distance(x, self.centroids)]
+                if min(dists) > t:
+                    results[i] = -1
+                else:
+                    results[i] = 1
+
+            score = validate_model(results.reshape(-1,1), test_labels)
+            if score > best_score:
+                best_score = score
+                best_threshold = t
+
+        self.__threshold = best_threshold
+
+        print(
+            f'Best f1-score: {best_score} -> Statistical model with threshold={best_threshold} \n')

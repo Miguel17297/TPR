@@ -2,7 +2,7 @@ import numpy as np
 import argparse
 import matplotlib.pyplot as plt
 from sklearn.decomposition import PCA
-from models import OneClassSVM, IsolationForest
+from models import OneClassSVM, IsolationForest, StatisticalModel
 import itertools
 import warnings
 from utils import distance, dataset_division,validate_model
@@ -23,7 +23,7 @@ def compute(features_normal, features_bot,outfile):
     if not os.path.exists(results_path):
         os.makedirs(results_path)
         
-    with open(os.path.join(results_path,outfile), "w") as f:
+    with open(os.path.join(results_path,'modelValidation.txt'), "w") as f:
         sys.stdout = f
 
         # data analysis
@@ -88,29 +88,11 @@ def compute(features_normal, features_bot,outfile):
 
         print('\n-- Anomaly Detection based on Statistical Model --')
 
-        percentage = 0.7
+        anomaly_threshold = [5, 10, 3, 7]
 
-        centroids = np.mean(train_normal, axis=0)
-        print('All Features Centroids:\n', centroids)
+        sm = StatisticalModel()
+        sm.hyper_tunning(train_normal, test_data, test_labels, anomaly_threshold)
 
-        AnomalyThreshold = [5, 10, 3, 7]
-        print('\n-- Anomaly Detection based on Centroids Distances --')
-        for j in AnomalyThreshold:
-            print(f'Anomaly Threshold: {j}')
-            nObsTest, nFea = test_data.shape
-            results = np.ones(nObsTest)
-            for i in range(nObsTest):
-                x = test_data[i]
-                dists = [distance(x, centroids)]
-                if min(dists) > j:
-                    results[i] = -1
-                else:
-                    results[i] = 1
-
-            real_values = test_labels
-            f1_score = validate_model(results.reshape(-1, 1), real_values)
-            
-        
         
         print('-----------------------------------------------------------------\n')
 
@@ -161,7 +143,7 @@ def main(bot, pca,outfile):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Anomaly detection')
     parser.add_argument('-b', '--bot', type=int, help='Bot Level', choices=[1, 2, 3], default=3)
-    parser.add_argument('-o', '--output', type=str,nargs='?', help='Output file',const='modelValidation.txt')
+    parser.add_argument('-o', '--output', type=str, nargs='?', help='Output file', const='modelValidation.txt')
     parser.add_argument('--pca', type=bool, help='Use pca', default=False)
     args = parser.parse_args()
     

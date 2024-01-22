@@ -1,0 +1,10 @@
+-----------------------------------------------------------------
+
+
+-- Anomaly Detection based on Essemble--
+
+	True Positives: 29, False Positives: 1, True Negatives: 38, False Negatives: 1
+	Acurracy: 0.8481012658227848
+	Recall: 0.725
+	Precision: 0.9666666666666667
+	F1-Score: 0.8285714285714285
