@@ -10,10 +10,10 @@ from utils import distance, dataset_division,validate_model
 import os
 import sys
 
-BEST_NU = 0.5
-BEST_THRESHOLD = 7
+BEST_NU = 0.1
+BEST_THRESHOLD = 10
 BEST_MS = 400
-BEST_RS = 9
+BEST_RS = 7
 
 def ensemble(bot, pca, outfile):
     original_stdout = sys.stdout
@@ -25,7 +25,7 @@ def ensemble(bot, pca, outfile):
         os.makedirs(results_path)
 
     features_bot = np.loadtxt(f'bot{bot}.dat')
-    features_normal = np.loadtxt("features.out")
+    features_normal = np.vstack((np.loadtxt("linkedIn.dat"),np.loadtxt("tripadvisor.dat"),np.loadtxt("taobao.dat")))
     train_normal, test_normal = dataset_division(features_normal)
     train_bot, test_bot = dataset_division(features_bot)
     labels_normal_test = np.ones((len(test_normal), 1)) * 1

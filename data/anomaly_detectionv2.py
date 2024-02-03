@@ -12,7 +12,7 @@ import sys
 warnings.filterwarnings('ignore')
 
 
-def compute(features_normal, features_bot,outfile):
+def compute(features_linked,features_trip,features_tb ,features_bot,outfile,pca = None):
     
     original_stdout = sys.stdout
     
@@ -23,11 +23,16 @@ def compute(features_normal, features_bot,outfile):
     if not os.path.exists(results_path):
         os.makedirs(results_path)
         
-    with open(os.path.join(results_path,'modelValidation.txt'), "w") as f:
-        sys.stdout = f
+    if pca:
+        fileName = f'pca_{pca}.txt'
+    else:
+        fileName = "modelValidation.txt"
+        
+    with open(os.path.join(results_path,fileName), "w") as f:
+        # sys.stdout = f
 
         # data analysis
-
+        features_normal = np.vstack((features_linked, features_trip, features_tb))
         features = np.vstack((features_normal, features_bot))
         labels_normal = np.ones((len(features_normal), 1)) * 1
         labels_bot= np.ones((len(features_bot), 1)) * -1
@@ -75,9 +80,12 @@ def compute(features_normal, features_bot,outfile):
 
 
         # dataset division
-
-        train_normal, test_normal = dataset_division(features_normal)
+        train_linked, test_linked = dataset_division(features_linked)
+        train_trip, test_trip = dataset_division(features_trip)
+        train_taobao, test_taobao = dataset_division(features_tb)
         train_bot, test_bot = dataset_division(features_bot)
+        train_normal= np.vstack((train_linked, train_trip, train_taobao))
+        test_normal = np.vstack((test_linked, test_trip, test_taobao))
         labels_normal_test = np.ones((len(test_normal), 1)) * 1
         labels_bot_test = np.ones((len(test_bot), 1)) * -1
 
@@ -118,33 +126,41 @@ def compute(features_normal, features_bot,outfile):
 
         isf = IsolationForest()
         isf.hyper_tunning(train_normal, test_data, test_labels, max_samples, random_state)
-        
-    sys.stdout = original_stdout
+
+    # sys.stdout = original_stdout
 
 
 def main(bot, pca,outfile):
     features_bot = np.loadtxt(f'bot{bot}.dat')
-    features_normal = np.loadtxt("features.out")
+    features_linked = np.loadtxt("linkedIn.dat")
+    features_trip = np.loadtxt("tripadvisor.dat")
+    features_tb = np.loadtxt("taobao.dat")
+
 
     if pca:
-        pca_values = ([2, 4, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20])
+        pca_values = ([6])
+        
         for i in pca_values:
+            
             pca = PCA(n_components=i)
-            pca_normal = pca.fit_transform(features_normal)
+            pca_linked = pca.fit_transform(features_linked)
+            pca_trip = pca.fit_transform(features_trip)
+            pca_taobao = pca.fit_transform(features_tb)
             pca_bot = pca.fit_transform(features_bot)
             
-            compute(pca_normal, pca_bot,outfile)
+            compute(pca_linked,pca_trip,pca_taobao,pca_bot,outfile,i)
 
     else:
 
-        compute(features_normal, features_bot,outfile)
+        compute(features_linked,features_tb,features_trip, features_bot,outfile)
 
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Anomaly detection')
     parser.add_argument('-b', '--bot', type=int, help='Bot Level', choices=[1, 2, 3], default=3)
     parser.add_argument('-o', '--output', type=str, nargs='?', help='Output file', const='modelValidation.txt')
-    parser.add_argument('--pca', type=bool, help='Use pca', default=False)
+    # TODO : make PCA TERMINAL
+    parser.add_argument('--pca', type=bool, help='Use pca', default=True)
     args = parser.parse_args()
     
 

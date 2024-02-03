@@ -54,8 +54,12 @@ class OneClassSVM(Model):
         model = self.model
         for v in nu:
             print(f'\nOneClassSvm {self.kernel} with nu={v}')
-            m = svm.OneClassSVM(gamma='scale', kernel='linear', nu=v).fit(train)
+            m = svm.OneClassSVM(gamma='scale', kernel='linear', nu=v)
+            print("fit")
+            m.fit(train)
+            print("fiteee")
             res = m.predict(test)
+            print("predict")
 
             score = validate_model(res.reshape(-1, 1), test_labels)
 

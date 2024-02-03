@@ -16,7 +16,6 @@ def captureProcess(capture, lengthObsWindow, slidingValue,file_name):
         
 
         for pkt in capture: 
-            print(n_pkts)
             # reset
             if n_pkts == lengthObsWindow:
                 # update counter
@@ -43,16 +42,11 @@ def computeFeatures(data):
     diff_pkts = np.diff(data[:, 1])  # diference between packets
 
     diff_up_up = np.diff(data[data[:, 0] == PKT_UPLOAD][:, 1])  # differente between upload upload
-    print(diff_up_up)
     diff_down_down = np.diff(data[data[:, 0] == PKT_DOWNLOAD][:, 1])  # differente between upload upload
-    print(diff_down_down)
     diff_up_down = np.array(
         [row2[1] - row1[1] for row1, row2 in zip(data, data[1:, ])  # differente between upload downloads
          if (row1[0] == PKT_UPLOAD and row2[0] == PKT_DOWNLOAD) or (
                  row2[0] == PKT_UPLOAD and row1[0] == PKT_DOWNLOAD)])
-    print(diff_up_down)
-    # compute features
-    # TODO: compute all relevant features (mean, std, median ...)
     
 
     p = [75, 90, 95, 98]
@@ -71,12 +65,6 @@ def computeFeatures(data):
             std1 = np.std(metric, axis=0)
             pr1 = np.array(np.percentile(metric, p, axis=0))
             
-                
-
-        # pr1 = np.array(np.percentile(metric, p, axis=0))
-        # print(m1)
-        # print(md1)
-        # print(std1)
 
         features = np.hstack((m1, md1, std1,pr1))
 
@@ -92,11 +80,16 @@ def computeFeatures(data):
 def pktValidation(pkt):
     global scnets
     global ssnets
+    
 
     timestamp, srcIP, dstIP = pkt.sniff_timestamp, pkt.ip.src, pkt.ip.dst
+    print(ssnets)
+    print(srcIP)
+    print
 
     if (IPAddress(srcIP) in scnets and IPAddress(dstIP) in ssnets) or (
             IPAddress(srcIP) in ssnets and IPAddress(dstIP) in scnets):
+
 
         if IPAddress(srcIP) in ssnets:  # download
 
@@ -153,7 +146,6 @@ def main():
 
     global ssnets
     ssnets = IPSet(snets)
-
     file_input = args.input
 
     capture = pyshark.FileCapture(file_input, display_filter='tls', keep_packets=False)

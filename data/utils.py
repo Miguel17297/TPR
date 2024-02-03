@@ -106,4 +106,4 @@ def distance(c, p):
             s += np.square((p[i] - c[i]) / c[i])
             n += 1
 
-    return np.sqrt(s / n)
+    return np.sqrt(s / n) if n>0 else 0
