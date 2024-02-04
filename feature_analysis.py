@@ -13,7 +13,7 @@ def feature_analysis(bot):
     features_trip = np.loadtxt("data/tripadvisor.dat")
     features_tb = np.loadtxt("data/taobao.dat")
 
-    results_path = os.path.join(os.path.join(os.getcwd()), "results", f"bot{bot}")
+    results_path = os.path.join(os.path.dirname(os.getcwd()), "results", f"bot{bot}")
 
     if not os.path.exists(results_path):
         os.makedirs(results_path)
@@ -55,6 +55,8 @@ def feature_analysis(bot):
             col = idx % num_cols
             axes[row, col].scatter(features[:, i], features[:, j], c=labels.flatten(), cmap='viridis')
             axes[row, col].set_title(f'{f_labels[i]} vs {f_labels[j]}')
+            axes[row, col].set_xlim(0,0.0002)
+            axes[row, col].set_ylim(0,0.00003)
 
         # Adjust layout to prevent overlapping
         plt.tight_layout()
