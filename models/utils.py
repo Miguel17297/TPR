@@ -66,7 +66,7 @@ def validate_model(model_predictions, real_values):
     f1_score_den = (recall + precision)
     f1_score = 2 * (recall * precision) / f1_score_den if f1_score_den > 0 else 0
 
-    print(f"\n\tTrue Positives: {tp}, False Positives: {fp}, True Negatives: {tn}, False Negatives: {fp}")
+    print(f"\n\tTrue Positives: {tp}, False Positives: {fp}, True Negatives: {tn}, False Negatives: {fn}")
     print(f"\tAcurracy: {accuracy}")
     print(f"\tRecall: {recall}")
     print(f"\tPrecision: {precision}")
