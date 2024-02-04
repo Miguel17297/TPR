@@ -13,7 +13,7 @@ def feature_analysis(bot):
     features_trip = np.loadtxt("data/tripadvisor.dat")
     features_tb = np.loadtxt("data/taobao.dat")
 
-    results_path = os.path.join(os.path.dirname(os.getcwd()), "results", f"bot{bot}")
+    results_path = os.path.join(os.path.join(os.getcwd()), "results", f"bot{bot}")
 
     if not os.path.exists(results_path):
         os.makedirs(results_path)

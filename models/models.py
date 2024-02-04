@@ -34,6 +34,7 @@ class OneClassSVM(Model):
         self.__nu = 0.5
 
 
+
     @property
     def kernel(self):
         return self.__kernel
