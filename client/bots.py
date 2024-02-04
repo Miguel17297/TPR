@@ -177,9 +177,9 @@ class BotLevel3(Bot):
                 print(f"Connectin-Id: {stream_id} - Number of already opened Streams: {streams_count + stream_id}")
                 self.send_request(stream_id)
                 self.open_streams = self.open_streams + 1
-                time.sleep(abs(np.random.normal(1, 0.5)))
+                time.sleep(abs(np.random.normal(0.01, 0.5)))
 
-                if np.random.binomial(1, 0.4) == 1: # reset connection
+                if np.random.binomial(1, 0.5) == 1: # reset connection
                     print(f"Reset-Connection: {stream_id}")
                     self.reset_stream(stream_id)
                     self.open_streams = self.open_streams - 1
@@ -190,7 +190,7 @@ class BotLevel3(Bot):
 
             self.iterations = self.iterations - 1
 
-            time.sleep(np.random.gamma(0.8, 15))
+            time.sleep(np.random.gamma(0.8, 10))
 
         self.response_stream_ended = True
         self.handle_events()

@@ -32,6 +32,7 @@ def compute(features_linked, features_trip, features_tb, features_bot, results_p
         train_normal = pca.fit_transform(train_normal)
         test_data = pca.transform(test_data)
 
+
     original_stdout = sys.stdout
 
     with open(outfile, "w") as f:
@@ -86,8 +87,11 @@ def main(bot, pca):
         os.makedirs(results_path)
 
     if pca:
-        # pca_values = [*range(17,21)]
-        pca_values= [27]
+        #pca_values = [*range(6,11)]
+        #pca_values = [*range(11,15)]
+        #pca_values = [*range(15,18)]
+        pca_values = [*range(25,28)]
+        #pca_values= [27]
 
         for i in pca_values:
             file_name = os.path.join(results_path, f'pca_{i}.txt')
