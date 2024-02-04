@@ -15,7 +15,7 @@ BEST_RS = 3
 def ensemble(bot):
     original_stdout = sys.stdout
     
-    results_path = os.path.join(os.path.dirname(os.getcwd()), "results", "essemble")
+    results_path = os.path.join(os.path.join(os.getcwd()), "results", "essemble")
 
     if not os.path.exists(results_path):
         os.makedirs(results_path)
@@ -28,7 +28,7 @@ def ensemble(bot):
     train_trip, test_trip = dataset_division(features_trip)
     train_taobao, test_taobao = dataset_division(features_tb)
     
-    features_bot = np.loadtxt(f'bot{bot}.dat')
+    features_bot = np.loadtxt(f'data/bot{bot}.dat')
 
     train_bot, test_bot = dataset_division(features_bot, 0.5)
     train_normal = np.vstack((train_linked, train_trip, train_taobao))
