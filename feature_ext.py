@@ -4,13 +4,20 @@ import datetime
 import numpy as np
 from netaddr import IPNetwork, IPAddress, IPSet
 import pyshark
+import os
 
 PKT_UPLOAD = 0  # Upload Packet
 PKT_DOWNLOAD = 1  # Download Packet
 
 
 def captureProcess(capture, lengthObsWindow, slidingValue,file_name):
-    with open(file_name, "w") as f:
+
+    features_path = os.path.join(os.path.join(os.getcwd()), "data")
+
+    if not os.path.exists(features_path):
+        os.makedirs(features_path)
+
+    with open(os.path.join(features_path, file_name), "w") as f:
 
         n_pkts = 0  # number of packets processed
         
@@ -83,9 +90,6 @@ def pktValidation(pkt):
     
 
     timestamp, srcIP, dstIP = pkt.sniff_timestamp, pkt.ip.src, pkt.ip.dst
-    print(ssnets)
-    print(srcIP)
-    print
 
     if (IPAddress(srcIP) in scnets and IPAddress(dstIP) in ssnets) or (
             IPAddress(srcIP) in ssnets and IPAddress(dstIP) in scnets):
