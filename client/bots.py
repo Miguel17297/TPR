@@ -20,7 +20,7 @@ SERVER_PORT = 8443
 class Bot(ABC):
     def __init__(self, iterations, max_open_streams):
         ctx = ssl.create_default_context(cafile=certifi.where())
-        ctx.load_verify_locations("../ca/root_cert.pem")
+        ctx.load_verify_locations("../server/ca/root_cert.pem")
         ctx.set_alpn_protocols(['h2'])
         s = socket.create_connection((SERVER_NAME, SERVER_PORT))
         self.soc = ctx.wrap_socket(s, server_hostname=SERVER_NAME)
@@ -190,7 +190,7 @@ class BotLevel3(Bot):
 
             self.iterations = self.iterations - 1
 
-            time.sleep(random.randint(2, 10))
+            time.sleep(np.random.gamma(0.8, 15))
 
         self.response_stream_ended = True
         self.handle_events()

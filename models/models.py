@@ -1,7 +1,7 @@
 from abc import ABC, abstractmethod
 from sklearn import svm
 from sklearn.ensemble import IsolationForest as IForest
-from utils import validate_model, distance
+from models.utils import validate_model, distance
 import itertools as iter
 import numpy as np
 
@@ -45,8 +45,6 @@ class OneClassSVM(Model):
     def train(self, data):
         self.model.fit(data)
 
-    def predict(self, test):
-        return self.model.predict(test)
 
     def hyper_tunning(self, train, test, test_labels, nu):
         best_score = 0
@@ -78,6 +76,7 @@ class IsolationForest(Model):
         self.__max_samples = max_samples
         self.__random_state = random_state
 
+
     @property
     def max_samples(self):
         return self.__max_samples
@@ -85,6 +84,7 @@ class IsolationForest(Model):
     @property
     def random_state(self):
         return self.__random_state
+
 
     def hyper_tunning(self, train, test, test_labels, max_samples, random_state):
 

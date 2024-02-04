@@ -1,5 +1,0 @@
-
--- Anomaly Detection based on Statistical Model --
-
--- Anomaly Detection based on Centroids Distances --
-Anomaly Threshold: 5
