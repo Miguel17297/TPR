@@ -39,104 +39,104 @@ Best f1-score: 0 -> Statistical model with threshold=5
 
 OneClassSvm linear with nu=0.1
 
-	True Positives: 78, False Positives: 1878, True Negatives: 98, False Negatives: 1
-	Acurracy: 0.08564476885644769
-	Recall: 0.9873417721518988
-	Precision: 0.03987730061349693
-	F1-Score: 0.07665847665847665
+	True Positives: 79, False Positives: 1877, True Negatives: 99, False Negatives: 0
+	Acurracy: 0.08661800486618004
+	Recall: 1.0
+	Precision: 0.040388548057259714
+	F1-Score: 0.07764127764127765
 
 OneClassSvm linear with nu=0.4
 
-	True Positives: 71, False Positives: 50, True Negatives: 1926, False Negatives: 8
-	Acurracy: 0.9717761557177615
-	Recall: 0.8987341772151899
-	Precision: 0.5867768595041323
-	F1-Score: 0.7100000000000001
+	True Positives: 60, False Positives: 62, True Negatives: 1914, False Negatives: 19
+	Acurracy: 0.9605839416058394
+	Recall: 0.759493670886076
+	Precision: 0.4918032786885246
+	F1-Score: 0.5970149253731343
 
 OneClassSvm linear with nu=0.5
 
-	True Positives: 38, False Positives: 95, True Negatives: 1881, False Negatives: 41
-	Acurracy: 0.9338199513381995
-	Recall: 0.4810126582278481
-	Precision: 0.2857142857142857
-	F1-Score: 0.3584905660377359
+	True Positives: 25, False Positives: 102, True Negatives: 1874, False Negatives: 54
+	Acurracy: 0.9240875912408759
+	Recall: 0.31645569620253167
+	Precision: 0.1968503937007874
+	F1-Score: 0.24271844660194178
 
 OneClassSvm linear with nu=0.8
 
-	True Positives: 78, False Positives: 145, True Negatives: 1831, False Negatives: 1
-	Acurracy: 0.9289537712895377
+	True Positives: 78, False Positives: 150, True Negatives: 1826, False Negatives: 1
+	Acurracy: 0.9265206812652068
 	Recall: 0.9873417721518988
-	Precision: 0.34977578475336324
-	F1-Score: 0.5165562913907285
-Best f1-score: 0.7100000000000001 -> OneClassSvm linear with nu=0.4 
+	Precision: 0.34210526315789475
+	F1-Score: 0.50814332247557
+Best f1-score: 0.5970149253731343 -> OneClassSvm linear with nu=0.4 
 
 
 OneClassSvm rbf with nu=0.1
 
-	True Positives: 78, False Positives: 1878, True Negatives: 98, False Negatives: 1
-	Acurracy: 0.08564476885644769
-	Recall: 0.9873417721518988
-	Precision: 0.03987730061349693
-	F1-Score: 0.07665847665847665
+	True Positives: 13, False Positives: 215, True Negatives: 1761, False Negatives: 66
+	Acurracy: 0.8632603406326034
+	Recall: 0.16455696202531644
+	Precision: 0.05701754385964912
+	F1-Score: 0.08469055374592833
 
 OneClassSvm rbf with nu=0.4
 
-	True Positives: 71, False Positives: 50, True Negatives: 1926, False Negatives: 8
-	Acurracy: 0.9717761557177615
-	Recall: 0.8987341772151899
-	Precision: 0.5867768595041323
-	F1-Score: 0.7100000000000001
+	True Positives: 37, False Positives: 901, True Negatives: 1075, False Negatives: 42
+	Acurracy: 0.5411192214111922
+	Recall: 0.46835443037974683
+	Precision: 0.039445628997867806
+	F1-Score: 0.07276302851524091
 
 OneClassSvm rbf with nu=0.5
 
-	True Positives: 38, False Positives: 95, True Negatives: 1881, False Negatives: 41
-	Acurracy: 0.9338199513381995
-	Recall: 0.4810126582278481
-	Precision: 0.2857142857142857
-	F1-Score: 0.3584905660377359
+	True Positives: 53, False Positives: 1121, True Negatives: 855, False Negatives: 26
+	Acurracy: 0.4418491484184915
+	Recall: 0.6708860759493671
+	Precision: 0.04514480408858603
+	F1-Score: 0.08459696727853153
 
 OneClassSvm rbf with nu=0.8
 
-	True Positives: 78, False Positives: 145, True Negatives: 1831, False Negatives: 1
-	Acurracy: 0.9289537712895377
+	True Positives: 78, False Positives: 1799, True Negatives: 177, False Negatives: 1
+	Acurracy: 0.12408759124087591
 	Recall: 0.9873417721518988
-	Precision: 0.34977578475336324
-	F1-Score: 0.5165562913907285
-Best f1-score: 0.7100000000000001 -> OneClassSvm rbf with nu=0.4 
+	Precision: 0.04155567394778902
+	F1-Score: 0.07975460122699386
+Best f1-score: 0.08469055374592833 -> OneClassSvm rbf with nu=0.1 
 
 
 OneClassSvm poly with nu=0.1
 
-	True Positives: 78, False Positives: 1878, True Negatives: 98, False Negatives: 1
-	Acurracy: 0.08564476885644769
-	Recall: 0.9873417721518988
-	Precision: 0.03987730061349693
-	F1-Score: 0.07665847665847665
+	True Positives: 0, False Positives: 5, True Negatives: 1971, False Negatives: 79
+	Acurracy: 0.9591240875912409
+	Recall: 0.0
+	Precision: 0.0
+	F1-Score: 0
 
 OneClassSvm poly with nu=0.4
 
-	True Positives: 71, False Positives: 50, True Negatives: 1926, False Negatives: 8
-	Acurracy: 0.9717761557177615
-	Recall: 0.8987341772151899
-	Precision: 0.5867768595041323
-	F1-Score: 0.7100000000000001
+	True Positives: 62, False Positives: 1840, True Negatives: 136, False Negatives: 17
+	Acurracy: 0.09635036496350365
+	Recall: 0.7848101265822784
+	Precision: 0.03259726603575184
+	F1-Score: 0.06259464916708733
 
 OneClassSvm poly with nu=0.5
 
-	True Positives: 38, False Positives: 95, True Negatives: 1881, False Negatives: 41
-	Acurracy: 0.9338199513381995
-	Recall: 0.4810126582278481
-	Precision: 0.2857142857142857
-	F1-Score: 0.3584905660377359
+	True Positives: 0, False Positives: 16, True Negatives: 1960, False Negatives: 79
+	Acurracy: 0.9537712895377128
+	Recall: 0.0
+	Precision: 0.0
+	F1-Score: 0
 
 OneClassSvm poly with nu=0.8
 
-	True Positives: 78, False Positives: 145, True Negatives: 1831, False Negatives: 1
-	Acurracy: 0.9289537712895377
-	Recall: 0.9873417721518988
-	Precision: 0.34977578475336324
-	F1-Score: 0.5165562913907285
-Best f1-score: 0.7100000000000001 -> OneClassSvm poly with nu=0.4 
+	True Positives: 24, False Positives: 24, True Negatives: 1952, False Negatives: 55
+	Acurracy: 0.9615571776155718
+	Recall: 0.3037974683544304
+	Precision: 0.5
+	F1-Score: 0.3779527559055118
+Best f1-score: 0.3779527559055118 -> OneClassSvm poly with nu=0.8 
 
 -----------------------------------------------------------------
 

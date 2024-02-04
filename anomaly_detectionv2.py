@@ -89,6 +89,7 @@ def main(bot, pca):
     if pca:
 
         pca_values = [*range(6,28)]
+
         for i in pca_values:
             file_name = os.path.join(results_path, f'pca_{i}.txt')
 

@@ -53,7 +53,7 @@ class OneClassSVM(Model):
         model = self.model
         for v in nu:
             print(f'\nOneClassSvm {self.kernel} with nu={v}')
-            m = svm.OneClassSVM(gamma='scale', kernel='linear', nu=v)
+            m = svm.OneClassSVM(gamma='scale', kernel=self.kernel, nu=v)
             m.fit(train)
             res = m.predict(test)
 
