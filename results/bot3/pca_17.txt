@@ -5,28 +5,28 @@
 Anomaly Threshold: 5
 
 	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
-	Acurracy: 0.9767671774592189
+	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
 	F1-Score: 0
 Anomaly Threshold: 10
 
 	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
-	Acurracy: 0.9767671774592189
+	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
 	F1-Score: 0
 Anomaly Threshold: 3
 
 	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
-	Acurracy: 0.9767671774592189
+	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
 	F1-Score: 0
 Anomaly Threshold: 7
 
 	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
-	Acurracy: 0.9767671774592189
+	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
 	F1-Score: 0
@@ -39,104 +39,104 @@ Best f1-score: 0 -> Statistical model with threshold=5
 
 OneClassSvm linear with nu=0.1
 
-	True Positives: 5, False Positives: 1870, True Negatives: 106, False Negatives: 1870
-	Acurracy: 0.054869006426099855
-	Recall: 0.10638297872340426
-	Precision: 0.0026666666666666666
-	F1-Score: 0.005202913631633715
+	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 1870
+	Acurracy: 0.0851581508515815
+	Recall: 0.8734177215189873
+	Precision: 0.03558535327488396
+	F1-Score: 0.06838453914767097
 
 OneClassSvm linear with nu=0.4
 
-	True Positives: 24, False Positives: 41, True Negatives: 1935, False Negatives: 41
-	Acurracy: 0.9683638161146811
-	Recall: 0.5106382978723404
-	Precision: 0.36923076923076925
-	F1-Score: 0.42857142857142855
+	True Positives: 14, False Positives: 37, True Negatives: 1939, False Negatives: 37
+	Acurracy: 0.9503649635036496
+	Recall: 0.17721518987341772
+	Precision: 0.27450980392156865
+	F1-Score: 0.2153846153846154
 
 OneClassSvm linear with nu=0.5
 
-	True Positives: 16, False Positives: 71, True Negatives: 1905, False Negatives: 71
-	Acurracy: 0.9495798319327731
-	Recall: 0.3404255319148936
-	Precision: 0.1839080459770115
-	F1-Score: 0.23880597014925373
+	True Positives: 14, False Positives: 75, True Negatives: 1901, False Negatives: 75
+	Acurracy: 0.9318734793187348
+	Recall: 0.17721518987341772
+	Precision: 0.15730337078651685
+	F1-Score: 0.16666666666666669
 
 OneClassSvm linear with nu=0.8
 
-	True Positives: 40, False Positives: 142, True Negatives: 1834, False Negatives: 142
-	Acurracy: 0.9263470093919921
-	Recall: 0.851063829787234
-	Precision: 0.21978021978021978
-	F1-Score: 0.34934497816593885
-Best f1-score: 0.42857142857142855 -> OneClassSvm linear with nu=0.4 
+	True Positives: 74, False Positives: 141, True Negatives: 1835, False Negatives: 141
+	Acurracy: 0.9289537712895377
+	Recall: 0.9367088607594937
+	Precision: 0.34418604651162793
+	F1-Score: 0.5034013605442177
+Best f1-score: 0.5034013605442177 -> OneClassSvm linear with nu=0.8 
 
 
 OneClassSvm rbf with nu=0.1
 
-	True Positives: 5, False Positives: 1870, True Negatives: 106, False Negatives: 1870
-	Acurracy: 0.054869006426099855
-	Recall: 0.10638297872340426
-	Precision: 0.0026666666666666666
-	F1-Score: 0.005202913631633715
+	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 1870
+	Acurracy: 0.0851581508515815
+	Recall: 0.8734177215189873
+	Precision: 0.03558535327488396
+	F1-Score: 0.06838453914767097
 
 OneClassSvm rbf with nu=0.4
 
-	True Positives: 24, False Positives: 41, True Negatives: 1935, False Negatives: 41
-	Acurracy: 0.9683638161146811
-	Recall: 0.5106382978723404
-	Precision: 0.36923076923076925
-	F1-Score: 0.42857142857142855
+	True Positives: 14, False Positives: 37, True Negatives: 1939, False Negatives: 37
+	Acurracy: 0.9503649635036496
+	Recall: 0.17721518987341772
+	Precision: 0.27450980392156865
+	F1-Score: 0.2153846153846154
 
 OneClassSvm rbf with nu=0.5
 
-	True Positives: 16, False Positives: 71, True Negatives: 1905, False Negatives: 71
-	Acurracy: 0.9495798319327731
-	Recall: 0.3404255319148936
-	Precision: 0.1839080459770115
-	F1-Score: 0.23880597014925373
+	True Positives: 14, False Positives: 75, True Negatives: 1901, False Negatives: 75
+	Acurracy: 0.9318734793187348
+	Recall: 0.17721518987341772
+	Precision: 0.15730337078651685
+	F1-Score: 0.16666666666666669
 
 OneClassSvm rbf with nu=0.8
 
-	True Positives: 40, False Positives: 142, True Negatives: 1834, False Negatives: 142
-	Acurracy: 0.9263470093919921
-	Recall: 0.851063829787234
-	Precision: 0.21978021978021978
-	F1-Score: 0.34934497816593885
-Best f1-score: 0.42857142857142855 -> OneClassSvm rbf with nu=0.4 
+	True Positives: 74, False Positives: 141, True Negatives: 1835, False Negatives: 141
+	Acurracy: 0.9289537712895377
+	Recall: 0.9367088607594937
+	Precision: 0.34418604651162793
+	F1-Score: 0.5034013605442177
+Best f1-score: 0.5034013605442177 -> OneClassSvm rbf with nu=0.8 
 
 
 OneClassSvm poly with nu=0.1
 
-	True Positives: 5, False Positives: 1870, True Negatives: 106, False Negatives: 1870
-	Acurracy: 0.054869006426099855
-	Recall: 0.10638297872340426
-	Precision: 0.0026666666666666666
-	F1-Score: 0.005202913631633715
+	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 1870
+	Acurracy: 0.0851581508515815
+	Recall: 0.8734177215189873
+	Precision: 0.03558535327488396
+	F1-Score: 0.06838453914767097
 
 OneClassSvm poly with nu=0.4
 
-	True Positives: 24, False Positives: 41, True Negatives: 1935, False Negatives: 41
-	Acurracy: 0.9683638161146811
-	Recall: 0.5106382978723404
-	Precision: 0.36923076923076925
-	F1-Score: 0.42857142857142855
+	True Positives: 14, False Positives: 37, True Negatives: 1939, False Negatives: 37
+	Acurracy: 0.9503649635036496
+	Recall: 0.17721518987341772
+	Precision: 0.27450980392156865
+	F1-Score: 0.2153846153846154
 
 OneClassSvm poly with nu=0.5
 
-	True Positives: 16, False Positives: 71, True Negatives: 1905, False Negatives: 71
-	Acurracy: 0.9495798319327731
-	Recall: 0.3404255319148936
-	Precision: 0.1839080459770115
-	F1-Score: 0.23880597014925373
+	True Positives: 14, False Positives: 75, True Negatives: 1901, False Negatives: 75
+	Acurracy: 0.9318734793187348
+	Recall: 0.17721518987341772
+	Precision: 0.15730337078651685
+	F1-Score: 0.16666666666666669
 
 OneClassSvm poly with nu=0.8
 
-	True Positives: 40, False Positives: 142, True Negatives: 1834, False Negatives: 142
-	Acurracy: 0.9263470093919921
-	Recall: 0.851063829787234
-	Precision: 0.21978021978021978
-	F1-Score: 0.34934497816593885
-Best f1-score: 0.42857142857142855 -> OneClassSvm poly with nu=0.4 
+	True Positives: 74, False Positives: 141, True Negatives: 1835, False Negatives: 141
+	Acurracy: 0.9289537712895377
+	Recall: 0.9367088607594937
+	Precision: 0.34418604651162793
+	F1-Score: 0.5034013605442177
+Best f1-score: 0.5034013605442177 -> OneClassSvm poly with nu=0.8 
 
 -----------------------------------------------------------------
 
@@ -145,322 +145,322 @@ Best f1-score: 0.42857142857142855 -> OneClassSvm poly with nu=0.4
 
 Isolation Forest with max_samples=100 and random_state=0
 
-	True Positives: 47, False Positives: 156, True Negatives: 1820, False Negatives: 156
-	Acurracy: 0.9228868017795353
-	Recall: 1.0
-	Precision: 0.2315270935960591
-	F1-Score: 0.376
+	True Positives: 75, False Positives: 156, True Negatives: 1820, False Negatives: 156
+	Acurracy: 0.9221411192214112
+	Recall: 0.9493670886075949
+	Precision: 0.3246753246753247
+	F1-Score: 0.4838709677419355
 
 Isolation Forest with max_samples=100 and random_state=1
 
-	True Positives: 47, False Positives: 152, True Negatives: 1824, False Negatives: 152
-	Acurracy: 0.9248640632723678
-	Recall: 1.0
-	Precision: 0.23618090452261306
-	F1-Score: 0.38211382113821135
+	True Positives: 73, False Positives: 152, True Negatives: 1824, False Negatives: 152
+	Acurracy: 0.9231143552311436
+	Recall: 0.9240506329113924
+	Precision: 0.3244444444444444
+	F1-Score: 0.4802631578947367
 
 Isolation Forest with max_samples=100 and random_state=2
 
-	True Positives: 47, False Positives: 147, True Negatives: 1829, False Negatives: 147
-	Acurracy: 0.9273356401384083
-	Recall: 1.0
-	Precision: 0.2422680412371134
-	F1-Score: 0.3900414937759336
+	True Positives: 74, False Positives: 147, True Negatives: 1829, False Negatives: 147
+	Acurracy: 0.9260340632603407
+	Recall: 0.9367088607594937
+	Precision: 0.334841628959276
+	F1-Score: 0.4933333333333333
 
 Isolation Forest with max_samples=100 and random_state=3
 
-	True Positives: 47, False Positives: 148, True Negatives: 1828, False Negatives: 148
-	Acurracy: 0.9268413247652002
-	Recall: 1.0
-	Precision: 0.24102564102564103
-	F1-Score: 0.3884297520661157
+	True Positives: 77, False Positives: 148, True Negatives: 1828, False Negatives: 148
+	Acurracy: 0.927007299270073
+	Recall: 0.9746835443037974
+	Precision: 0.3422222222222222
+	F1-Score: 0.5065789473684209
 
 Isolation Forest with max_samples=100 and random_state=4
 
-	True Positives: 47, False Positives: 154, True Negatives: 1822, False Negatives: 154
-	Acurracy: 0.9238754325259516
-	Recall: 1.0
-	Precision: 0.23383084577114427
-	F1-Score: 0.3790322580645161
+	True Positives: 77, False Positives: 154, True Negatives: 1822, False Negatives: 154
+	Acurracy: 0.9240875912408759
+	Recall: 0.9746835443037974
+	Precision: 0.3333333333333333
+	F1-Score: 0.49677419354838703
 
 Isolation Forest with max_samples=100 and random_state=5
 
-	True Positives: 47, False Positives: 148, True Negatives: 1828, False Negatives: 148
-	Acurracy: 0.9268413247652002
-	Recall: 1.0
-	Precision: 0.24102564102564103
-	F1-Score: 0.3884297520661157
+	True Positives: 76, False Positives: 148, True Negatives: 1828, False Negatives: 148
+	Acurracy: 0.9265206812652068
+	Recall: 0.9620253164556962
+	Precision: 0.3392857142857143
+	F1-Score: 0.5016501650165017
 
 Isolation Forest with max_samples=100 and random_state=6
 
-	True Positives: 47, False Positives: 151, True Negatives: 1825, False Negatives: 151
-	Acurracy: 0.9253583786455759
-	Recall: 1.0
-	Precision: 0.23737373737373738
-	F1-Score: 0.3836734693877551
+	True Positives: 77, False Positives: 151, True Negatives: 1825, False Negatives: 151
+	Acurracy: 0.9255474452554745
+	Recall: 0.9746835443037974
+	Precision: 0.33771929824561403
+	F1-Score: 0.501628664495114
 
 Isolation Forest with max_samples=100 and random_state=7
 
-	True Positives: 47, False Positives: 143, True Negatives: 1833, False Negatives: 143
-	Acurracy: 0.9293129016312407
-	Recall: 1.0
-	Precision: 0.24736842105263157
-	F1-Score: 0.3966244725738396
+	True Positives: 77, False Positives: 143, True Negatives: 1833, False Negatives: 143
+	Acurracy: 0.9294403892944039
+	Recall: 0.9746835443037974
+	Precision: 0.35
+	F1-Score: 0.5150501672240803
 
 Isolation Forest with max_samples=100 and random_state=8
 
-	True Positives: 47, False Positives: 153, True Negatives: 1823, False Negatives: 153
-	Acurracy: 0.9243697478991597
-	Recall: 1.0
-	Precision: 0.235
-	F1-Score: 0.38056680161943324
+	True Positives: 75, False Positives: 153, True Negatives: 1823, False Negatives: 153
+	Acurracy: 0.9236009732360098
+	Recall: 0.9493670886075949
+	Precision: 0.32894736842105265
+	F1-Score: 0.48859934853420195
 
 Isolation Forest with max_samples=100 and random_state=9
 
-	True Positives: 47, False Positives: 146, True Negatives: 1830, False Negatives: 146
-	Acurracy: 0.9278299555116164
-	Recall: 1.0
-	Precision: 0.24352331606217617
-	F1-Score: 0.39166666666666666
+	True Positives: 73, False Positives: 146, True Negatives: 1830, False Negatives: 146
+	Acurracy: 0.9260340632603407
+	Recall: 0.9240506329113924
+	Precision: 0.3333333333333333
+	F1-Score: 0.4899328859060403
 
 Isolation Forest with max_samples=200 and random_state=0
 
-	True Positives: 47, False Positives: 131, True Negatives: 1845, False Negatives: 131
-	Acurracy: 0.935244686109738
-	Recall: 1.0
-	Precision: 0.2640449438202247
-	F1-Score: 0.4177777777777777
+	True Positives: 39, False Positives: 131, True Negatives: 1845, False Negatives: 131
+	Acurracy: 0.9167883211678832
+	Recall: 0.4936708860759494
+	Precision: 0.22941176470588234
+	F1-Score: 0.3132530120481927
 
 Isolation Forest with max_samples=200 and random_state=1
 
-	True Positives: 47, False Positives: 133, True Negatives: 1843, False Negatives: 133
-	Acurracy: 0.9342560553633218
-	Recall: 1.0
-	Precision: 0.2611111111111111
-	F1-Score: 0.4140969162995595
+	True Positives: 41, False Positives: 133, True Negatives: 1843, False Negatives: 133
+	Acurracy: 0.9167883211678832
+	Recall: 0.5189873417721519
+	Precision: 0.23563218390804597
+	F1-Score: 0.3241106719367589
 
 Isolation Forest with max_samples=200 and random_state=2
 
-	True Positives: 47, False Positives: 126, True Negatives: 1850, False Negatives: 126
-	Acurracy: 0.9377162629757786
-	Recall: 1.0
-	Precision: 0.27167630057803466
-	F1-Score: 0.42727272727272725
+	True Positives: 40, False Positives: 126, True Negatives: 1850, False Negatives: 126
+	Acurracy: 0.9197080291970803
+	Recall: 0.5063291139240507
+	Precision: 0.24096385542168675
+	F1-Score: 0.32653061224489793
 
 Isolation Forest with max_samples=200 and random_state=3
 
-	True Positives: 47, False Positives: 126, True Negatives: 1850, False Negatives: 126
-	Acurracy: 0.9377162629757786
-	Recall: 1.0
-	Precision: 0.27167630057803466
-	F1-Score: 0.42727272727272725
+	True Positives: 49, False Positives: 126, True Negatives: 1850, False Negatives: 126
+	Acurracy: 0.9240875912408759
+	Recall: 0.620253164556962
+	Precision: 0.28
+	F1-Score: 0.38582677165354334
 
 Isolation Forest with max_samples=200 and random_state=4
 
-	True Positives: 47, False Positives: 131, True Negatives: 1845, False Negatives: 131
-	Acurracy: 0.935244686109738
-	Recall: 1.0
-	Precision: 0.2640449438202247
-	F1-Score: 0.4177777777777777
+	True Positives: 53, False Positives: 131, True Negatives: 1845, False Negatives: 131
+	Acurracy: 0.9236009732360098
+	Recall: 0.6708860759493671
+	Precision: 0.28804347826086957
+	F1-Score: 0.40304182509505704
 
 Isolation Forest with max_samples=200 and random_state=5
 
-	True Positives: 47, False Positives: 129, True Negatives: 1847, False Negatives: 129
-	Acurracy: 0.9362333168561542
-	Recall: 1.0
-	Precision: 0.26704545454545453
-	F1-Score: 0.42152466367713
+	True Positives: 49, False Positives: 129, True Negatives: 1847, False Negatives: 129
+	Acurracy: 0.9226277372262773
+	Recall: 0.620253164556962
+	Precision: 0.2752808988764045
+	F1-Score: 0.3813229571984436
 
 Isolation Forest with max_samples=200 and random_state=6
 
-	True Positives: 47, False Positives: 131, True Negatives: 1845, False Negatives: 131
-	Acurracy: 0.935244686109738
-	Recall: 1.0
-	Precision: 0.2640449438202247
-	F1-Score: 0.4177777777777777
+	True Positives: 48, False Positives: 131, True Negatives: 1845, False Negatives: 131
+	Acurracy: 0.9211678832116789
+	Recall: 0.6075949367088608
+	Precision: 0.2681564245810056
+	F1-Score: 0.37209302325581395
 
 Isolation Forest with max_samples=200 and random_state=7
 
-	True Positives: 47, False Positives: 127, True Negatives: 1849, False Negatives: 127
-	Acurracy: 0.9372219476025705
-	Recall: 1.0
-	Precision: 0.27011494252873564
-	F1-Score: 0.4253393665158371
+	True Positives: 36, False Positives: 127, True Negatives: 1849, False Negatives: 127
+	Acurracy: 0.9172749391727494
+	Recall: 0.45569620253164556
+	Precision: 0.22085889570552147
+	F1-Score: 0.29752066115702475
 
 Isolation Forest with max_samples=200 and random_state=8
 
-	True Positives: 47, False Positives: 132, True Negatives: 1844, False Negatives: 132
-	Acurracy: 0.9347503707365299
-	Recall: 1.0
-	Precision: 0.26256983240223464
-	F1-Score: 0.415929203539823
+	True Positives: 45, False Positives: 132, True Negatives: 1844, False Negatives: 132
+	Acurracy: 0.9192214111922141
+	Recall: 0.569620253164557
+	Precision: 0.2542372881355932
+	F1-Score: 0.3515625
 
 Isolation Forest with max_samples=200 and random_state=9
 
-	True Positives: 47, False Positives: 130, True Negatives: 1846, False Negatives: 130
-	Acurracy: 0.9357390014829461
-	Recall: 1.0
-	Precision: 0.2655367231638418
-	F1-Score: 0.41964285714285715
+	True Positives: 46, False Positives: 130, True Negatives: 1846, False Negatives: 130
+	Acurracy: 0.9206812652068127
+	Recall: 0.5822784810126582
+	Precision: 0.26136363636363635
+	F1-Score: 0.3607843137254902
 
 Isolation Forest with max_samples=300 and random_state=0
 
-	True Positives: 47, False Positives: 120, True Negatives: 1856, False Negatives: 120
-	Acurracy: 0.9406821552150272
-	Recall: 1.0
-	Precision: 0.281437125748503
-	F1-Score: 0.43925233644859807
+	True Positives: 30, False Positives: 120, True Negatives: 1856, False Negatives: 120
+	Acurracy: 0.9177615571776155
+	Recall: 0.379746835443038
+	Precision: 0.2
+	F1-Score: 0.2620087336244542
 
 Isolation Forest with max_samples=300 and random_state=1
 
-	True Positives: 47, False Positives: 123, True Negatives: 1853, False Negatives: 123
-	Acurracy: 0.9391992090954029
-	Recall: 1.0
-	Precision: 0.27647058823529413
-	F1-Score: 0.4331797235023042
+	True Positives: 28, False Positives: 123, True Negatives: 1853, False Negatives: 123
+	Acurracy: 0.9153284671532846
+	Recall: 0.35443037974683544
+	Precision: 0.18543046357615894
+	F1-Score: 0.24347826086956526
 
 Isolation Forest with max_samples=300 and random_state=2
 
-	True Positives: 47, False Positives: 117, True Negatives: 1859, False Negatives: 117
-	Acurracy: 0.9421651013346515
-	Recall: 1.0
-	Precision: 0.2865853658536585
-	F1-Score: 0.4454976303317535
+	True Positives: 24, False Positives: 117, True Negatives: 1859, False Negatives: 117
+	Acurracy: 0.9163017031630171
+	Recall: 0.3037974683544304
+	Precision: 0.1702127659574468
+	F1-Score: 0.2181818181818182
 
 Isolation Forest with max_samples=300 and random_state=3
 
-	True Positives: 47, False Positives: 122, True Negatives: 1854, False Negatives: 122
-	Acurracy: 0.939693524468611
-	Recall: 1.0
-	Precision: 0.2781065088757396
-	F1-Score: 0.4351851851851852
+	True Positives: 34, False Positives: 122, True Negatives: 1854, False Negatives: 122
+	Acurracy: 0.918734793187348
+	Recall: 0.43037974683544306
+	Precision: 0.21794871794871795
+	F1-Score: 0.2893617021276596
 
 Isolation Forest with max_samples=300 and random_state=4
 
-	True Positives: 47, False Positives: 120, True Negatives: 1856, False Negatives: 120
-	Acurracy: 0.9406821552150272
-	Recall: 1.0
-	Precision: 0.281437125748503
-	F1-Score: 0.43925233644859807
+	True Positives: 38, False Positives: 120, True Negatives: 1856, False Negatives: 120
+	Acurracy: 0.921654501216545
+	Recall: 0.4810126582278481
+	Precision: 0.24050632911392406
+	F1-Score: 0.32067510548523204
 
 Isolation Forest with max_samples=300 and random_state=5
 
-	True Positives: 47, False Positives: 123, True Negatives: 1853, False Negatives: 123
-	Acurracy: 0.9391992090954029
-	Recall: 1.0
-	Precision: 0.27647058823529413
-	F1-Score: 0.4331797235023042
+	True Positives: 39, False Positives: 123, True Negatives: 1853, False Negatives: 123
+	Acurracy: 0.9206812652068127
+	Recall: 0.4936708860759494
+	Precision: 0.24074074074074073
+	F1-Score: 0.32365145228215764
 
 Isolation Forest with max_samples=300 and random_state=6
 
-	True Positives: 47, False Positives: 122, True Negatives: 1854, False Negatives: 122
-	Acurracy: 0.939693524468611
-	Recall: 1.0
-	Precision: 0.2781065088757396
-	F1-Score: 0.4351851851851852
+	True Positives: 30, False Positives: 122, True Negatives: 1854, False Negatives: 122
+	Acurracy: 0.9167883211678832
+	Recall: 0.379746835443038
+	Precision: 0.19736842105263158
+	F1-Score: 0.2597402597402597
 
 Isolation Forest with max_samples=300 and random_state=7
 
-	True Positives: 46, False Positives: 115, True Negatives: 1861, False Negatives: 115
-	Acurracy: 0.9426594167078596
-	Recall: 0.9787234042553191
-	Precision: 0.2857142857142857
-	F1-Score: 0.4423076923076923
+	True Positives: 25, False Positives: 115, True Negatives: 1861, False Negatives: 115
+	Acurracy: 0.9177615571776155
+	Recall: 0.31645569620253167
+	Precision: 0.17857142857142858
+	F1-Score: 0.228310502283105
 
 Isolation Forest with max_samples=300 and random_state=8
 
-	True Positives: 47, False Positives: 119, True Negatives: 1857, False Negatives: 119
-	Acurracy: 0.9411764705882353
-	Recall: 1.0
-	Precision: 0.28313253012048195
-	F1-Score: 0.44131455399061037
+	True Positives: 28, False Positives: 119, True Negatives: 1857, False Negatives: 119
+	Acurracy: 0.9172749391727494
+	Recall: 0.35443037974683544
+	Precision: 0.19047619047619047
+	F1-Score: 0.24778761061946902
 
 Isolation Forest with max_samples=300 and random_state=9
 
-	True Positives: 47, False Positives: 120, True Negatives: 1856, False Negatives: 120
-	Acurracy: 0.9406821552150272
-	Recall: 1.0
-	Precision: 0.281437125748503
-	F1-Score: 0.43925233644859807
+	True Positives: 32, False Positives: 120, True Negatives: 1856, False Negatives: 120
+	Acurracy: 0.918734793187348
+	Recall: 0.4050632911392405
+	Precision: 0.21052631578947367
+	F1-Score: 0.27705627705627706
 
 Isolation Forest with max_samples=400 and random_state=0
 
-	True Positives: 46, False Positives: 110, True Negatives: 1866, False Negatives: 110
-	Acurracy: 0.9451309935739002
-	Recall: 0.9787234042553191
-	Precision: 0.2948717948717949
-	F1-Score: 0.45320197044334976
+	True Positives: 22, False Positives: 110, True Negatives: 1866, False Negatives: 110
+	Acurracy: 0.918734793187348
+	Recall: 0.27848101265822783
+	Precision: 0.16666666666666666
+	F1-Score: 0.20853080568720378
 
 Isolation Forest with max_samples=400 and random_state=1
 
-	True Positives: 46, False Positives: 117, True Negatives: 1859, False Negatives: 117
-	Acurracy: 0.9416707859614434
-	Recall: 0.9787234042553191
-	Precision: 0.2822085889570552
-	F1-Score: 0.4380952380952381
+	True Positives: 27, False Positives: 117, True Negatives: 1859, False Negatives: 117
+	Acurracy: 0.9177615571776155
+	Recall: 0.34177215189873417
+	Precision: 0.1875
+	F1-Score: 0.24215246636771295
 
 Isolation Forest with max_samples=400 and random_state=2
 
-	True Positives: 46, False Positives: 113, True Negatives: 1863, False Negatives: 113
-	Acurracy: 0.9436480474542758
-	Recall: 0.9787234042553191
-	Precision: 0.2893081761006289
-	F1-Score: 0.4466019417475728
+	True Positives: 25, False Positives: 113, True Negatives: 1863, False Negatives: 113
+	Acurracy: 0.918734793187348
+	Recall: 0.31645569620253167
+	Precision: 0.18115942028985507
+	F1-Score: 0.23041474654377878
 
 Isolation Forest with max_samples=400 and random_state=3
 
-	True Positives: 47, False Positives: 115, True Negatives: 1861, False Negatives: 115
-	Acurracy: 0.9431537320810677
-	Recall: 1.0
-	Precision: 0.29012345679012347
-	F1-Score: 0.44976076555023925
+	True Positives: 24, False Positives: 115, True Negatives: 1861, False Negatives: 115
+	Acurracy: 0.9172749391727494
+	Recall: 0.3037974683544304
+	Precision: 0.17266187050359713
+	F1-Score: 0.22018348623853212
 
 Isolation Forest with max_samples=400 and random_state=4
 
-	True Positives: 46, False Positives: 108, True Negatives: 1868, False Negatives: 108
-	Acurracy: 0.9461196243203164
-	Recall: 0.9787234042553191
-	Precision: 0.2987012987012987
-	F1-Score: 0.45771144278606973
+	True Positives: 23, False Positives: 108, True Negatives: 1868, False Negatives: 108
+	Acurracy: 0.9201946472019464
+	Recall: 0.2911392405063291
+	Precision: 0.17557251908396945
+	F1-Score: 0.21904761904761907
 
 Isolation Forest with max_samples=400 and random_state=5
 
-	True Positives: 46, False Positives: 111, True Negatives: 1865, False Negatives: 111
-	Acurracy: 0.9446366782006921
-	Recall: 0.9787234042553191
-	Precision: 0.2929936305732484
-	F1-Score: 0.4509803921568627
+	True Positives: 25, False Positives: 111, True Negatives: 1865, False Negatives: 111
+	Acurracy: 0.9197080291970803
+	Recall: 0.31645569620253167
+	Precision: 0.18382352941176472
+	F1-Score: 0.23255813953488372
 
 Isolation Forest with max_samples=400 and random_state=6
 
-	True Positives: 46, False Positives: 117, True Negatives: 1859, False Negatives: 117
-	Acurracy: 0.9416707859614434
-	Recall: 0.9787234042553191
-	Precision: 0.2822085889570552
-	F1-Score: 0.4380952380952381
+	True Positives: 25, False Positives: 117, True Negatives: 1859, False Negatives: 117
+	Acurracy: 0.9167883211678832
+	Recall: 0.31645569620253167
+	Precision: 0.176056338028169
+	F1-Score: 0.2262443438914027
 
 Isolation Forest with max_samples=400 and random_state=7
 
-	True Positives: 46, False Positives: 105, True Negatives: 1871, False Negatives: 105
-	Acurracy: 0.9476025704399407
-	Recall: 0.9787234042553191
-	Precision: 0.304635761589404
-	F1-Score: 0.46464646464646464
+	True Positives: 23, False Positives: 105, True Negatives: 1871, False Negatives: 105
+	Acurracy: 0.921654501216545
+	Recall: 0.2911392405063291
+	Precision: 0.1796875
+	F1-Score: 0.22222222222222224
 
 Isolation Forest with max_samples=400 and random_state=8
 
-	True Positives: 47, False Positives: 110, True Negatives: 1866, False Negatives: 110
-	Acurracy: 0.9456253089471083
-	Recall: 1.0
-	Precision: 0.29936305732484075
-	F1-Score: 0.4607843137254902
+	True Positives: 24, False Positives: 110, True Negatives: 1866, False Negatives: 110
+	Acurracy: 0.9197080291970803
+	Recall: 0.3037974683544304
+	Precision: 0.1791044776119403
+	F1-Score: 0.22535211267605632
 
 Isolation Forest with max_samples=400 and random_state=9
 
-	True Positives: 47, False Positives: 114, True Negatives: 1862, False Negatives: 114
-	Acurracy: 0.9436480474542758
-	Recall: 1.0
-	Precision: 0.2919254658385093
-	F1-Score: 0.4519230769230769
-Best f1-score: 0.46464646464646464 -> Isolation Forest with max_samples=400 and random_state=7 
+	True Positives: 25, False Positives: 114, True Negatives: 1862, False Negatives: 114
+	Acurracy: 0.9182481751824818
+	Recall: 0.31645569620253167
+	Precision: 0.17985611510791366
+	F1-Score: 0.2293577981651376
+Best f1-score: 0.5150501672240803 -> Isolation Forest with max_samples=100 and random_state=7 
 

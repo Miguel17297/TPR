@@ -78,10 +78,17 @@ def validate_model(model_predictions, real_values):
 
     # seaborn.set(font_scale=1.4)
     # ax = seaborn.heatmap(results , annot=True, cmap="YlGnBu", cbar_kws={'label': 'Scale'})
+<<<<<<< HEAD
 
     # ax.set_xticklabels(labels)
     # ax.set_yticklabels(labels)
 
+=======
+    #
+    # ax.set_xticklabels(labels)
+    # ax.set_yticklabels(labels)
+    #
+>>>>>>> 9ccec9550cbbe7fa338b915542cffe02786b84d6
     # ax.set(xlabel="Real Values", ylabel="Predicted Values")
     # plt.show()
 

@@ -1,4 +1,4 @@
-FROM nginx:alpine3.18
+FROM nginx:alpine3.18@sha256:b1cfc4e0e01b4dceca3265fd4ca97921569fca1a10919639bedfa8dad9127027
 
 COPY /conf/default.conf /etc/nginx/conf.d/
 COPY /certs/server_cert.pem /certs/server_key.pem /etc/nginx/ssl/

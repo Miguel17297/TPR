@@ -16,7 +16,7 @@ def compute(features_linked, features_trip, features_tb, features_bot, results_p
     train_linked, test_linked = dataset_division(features_linked)
     train_trip, test_trip = dataset_division(features_trip)
     train_taobao, test_taobao = dataset_division(features_tb)
-    train_bot, test_bot = dataset_division(features_bot)
+    train_bot, test_bot = dataset_division(features_bot, 0.5)
 
     train_normal = np.vstack((train_linked, train_trip, train_taobao))
     test_normal = np.vstack((test_linked, test_trip, test_taobao))
@@ -87,12 +87,7 @@ def main(bot, pca):
         os.makedirs(results_path)
 
     if pca:
-        #pca_values = [*range(6,11)]
-        #pca_values = [*range(11,15)]
-        #pca_values = [*range(15,18)]
-        pca_values = [*range(25,28)]
-        #pca_values= [27]
-
+        pca_values = [*range(6,27)]
         for i in pca_values:
             file_name = os.path.join(results_path, f'pca_{i}.txt')
 
