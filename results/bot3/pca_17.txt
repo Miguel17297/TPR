@@ -4,28 +4,28 @@
 -- Anomaly Detection based on Centroids Distances --
 Anomaly Threshold: 5
 
-	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
+	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 79
 	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
 	F1-Score: 0
 Anomaly Threshold: 10
 
-	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
+	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 79
 	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
 	F1-Score: 0
 Anomaly Threshold: 3
 
-	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
+	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 79
 	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
 	F1-Score: 0
 Anomaly Threshold: 7
 
-	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 0
+	True Positives: 0, False Positives: 0, True Negatives: 1976, False Negatives: 79
 	Acurracy: 0.9615571776155718
 	Recall: 0.0
 	Precision: 0
@@ -39,7 +39,7 @@ Best f1-score: 0 -> Statistical model with threshold=5
 
 OneClassSvm linear with nu=0.1
 
-	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 1870
+	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 10
 	Acurracy: 0.0851581508515815
 	Recall: 0.8734177215189873
 	Precision: 0.03558535327488396
@@ -47,33 +47,33 @@ OneClassSvm linear with nu=0.1
 
 OneClassSvm linear with nu=0.4
 
-	True Positives: 14, False Positives: 37, True Negatives: 1939, False Negatives: 37
-	Acurracy: 0.9503649635036496
+	True Positives: 14, False Positives: 44, True Negatives: 1932, False Negatives: 65
+	Acurracy: 0.9469586374695864
 	Recall: 0.17721518987341772
-	Precision: 0.27450980392156865
-	F1-Score: 0.2153846153846154
+	Precision: 0.2413793103448276
+	F1-Score: 0.20437956204379565
 
 OneClassSvm linear with nu=0.5
 
-	True Positives: 14, False Positives: 75, True Negatives: 1901, False Negatives: 75
-	Acurracy: 0.9318734793187348
-	Recall: 0.17721518987341772
-	Precision: 0.15730337078651685
-	F1-Score: 0.16666666666666669
+	True Positives: 13, False Positives: 66, True Negatives: 1910, False Negatives: 66
+	Acurracy: 0.9357664233576642
+	Recall: 0.16455696202531644
+	Precision: 0.16455696202531644
+	F1-Score: 0.16455696202531644
 
 OneClassSvm linear with nu=0.8
 
-	True Positives: 74, False Positives: 141, True Negatives: 1835, False Negatives: 141
+	True Positives: 76, False Positives: 143, True Negatives: 1833, False Negatives: 3
 	Acurracy: 0.9289537712895377
-	Recall: 0.9367088607594937
-	Precision: 0.34418604651162793
-	F1-Score: 0.5034013605442177
-Best f1-score: 0.5034013605442177 -> OneClassSvm linear with nu=0.8 
+	Recall: 0.9620253164556962
+	Precision: 0.3470319634703196
+	F1-Score: 0.5100671140939597
+Best f1-score: 0.5100671140939597 -> OneClassSvm linear with nu=0.8 
 
 
 OneClassSvm rbf with nu=0.1
 
-	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 1870
+	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 10
 	Acurracy: 0.0851581508515815
 	Recall: 0.8734177215189873
 	Precision: 0.03558535327488396
@@ -81,33 +81,33 @@ OneClassSvm rbf with nu=0.1
 
 OneClassSvm rbf with nu=0.4
 
-	True Positives: 14, False Positives: 37, True Negatives: 1939, False Negatives: 37
-	Acurracy: 0.9503649635036496
+	True Positives: 14, False Positives: 44, True Negatives: 1932, False Negatives: 65
+	Acurracy: 0.9469586374695864
 	Recall: 0.17721518987341772
-	Precision: 0.27450980392156865
-	F1-Score: 0.2153846153846154
+	Precision: 0.2413793103448276
+	F1-Score: 0.20437956204379565
 
 OneClassSvm rbf with nu=0.5
 
-	True Positives: 14, False Positives: 75, True Negatives: 1901, False Negatives: 75
-	Acurracy: 0.9318734793187348
-	Recall: 0.17721518987341772
-	Precision: 0.15730337078651685
-	F1-Score: 0.16666666666666669
+	True Positives: 13, False Positives: 66, True Negatives: 1910, False Negatives: 66
+	Acurracy: 0.9357664233576642
+	Recall: 0.16455696202531644
+	Precision: 0.16455696202531644
+	F1-Score: 0.16455696202531644
 
 OneClassSvm rbf with nu=0.8
 
-	True Positives: 74, False Positives: 141, True Negatives: 1835, False Negatives: 141
+	True Positives: 76, False Positives: 143, True Negatives: 1833, False Negatives: 3
 	Acurracy: 0.9289537712895377
-	Recall: 0.9367088607594937
-	Precision: 0.34418604651162793
-	F1-Score: 0.5034013605442177
-Best f1-score: 0.5034013605442177 -> OneClassSvm rbf with nu=0.8 
+	Recall: 0.9620253164556962
+	Precision: 0.3470319634703196
+	F1-Score: 0.5100671140939597
+Best f1-score: 0.5100671140939597 -> OneClassSvm rbf with nu=0.8 
 
 
 OneClassSvm poly with nu=0.1
 
-	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 1870
+	True Positives: 69, False Positives: 1870, True Negatives: 106, False Negatives: 10
 	Acurracy: 0.0851581508515815
 	Recall: 0.8734177215189873
 	Precision: 0.03558535327488396
@@ -115,28 +115,28 @@ OneClassSvm poly with nu=0.1
 
 OneClassSvm poly with nu=0.4
 
-	True Positives: 14, False Positives: 37, True Negatives: 1939, False Negatives: 37
-	Acurracy: 0.9503649635036496
+	True Positives: 14, False Positives: 44, True Negatives: 1932, False Negatives: 65
+	Acurracy: 0.9469586374695864
 	Recall: 0.17721518987341772
-	Precision: 0.27450980392156865
-	F1-Score: 0.2153846153846154
+	Precision: 0.2413793103448276
+	F1-Score: 0.20437956204379565
 
 OneClassSvm poly with nu=0.5
 
-	True Positives: 14, False Positives: 75, True Negatives: 1901, False Negatives: 75
-	Acurracy: 0.9318734793187348
-	Recall: 0.17721518987341772
-	Precision: 0.15730337078651685
-	F1-Score: 0.16666666666666669
+	True Positives: 13, False Positives: 66, True Negatives: 1910, False Negatives: 66
+	Acurracy: 0.9357664233576642
+	Recall: 0.16455696202531644
+	Precision: 0.16455696202531644
+	F1-Score: 0.16455696202531644
 
 OneClassSvm poly with nu=0.8
 
-	True Positives: 74, False Positives: 141, True Negatives: 1835, False Negatives: 141
+	True Positives: 76, False Positives: 143, True Negatives: 1833, False Negatives: 3
 	Acurracy: 0.9289537712895377
-	Recall: 0.9367088607594937
-	Precision: 0.34418604651162793
-	F1-Score: 0.5034013605442177
-Best f1-score: 0.5034013605442177 -> OneClassSvm poly with nu=0.8 
+	Recall: 0.9620253164556962
+	Precision: 0.3470319634703196
+	F1-Score: 0.5100671140939597
+Best f1-score: 0.5100671140939597 -> OneClassSvm poly with nu=0.8 
 
 -----------------------------------------------------------------
 
@@ -145,7 +145,7 @@ Best f1-score: 0.5034013605442177 -> OneClassSvm poly with nu=0.8
 
 Isolation Forest with max_samples=100 and random_state=0
 
-	True Positives: 75, False Positives: 156, True Negatives: 1820, False Negatives: 156
+	True Positives: 75, False Positives: 156, True Negatives: 1820, False Negatives: 4
 	Acurracy: 0.9221411192214112
 	Recall: 0.9493670886075949
 	Precision: 0.3246753246753247
@@ -153,7 +153,7 @@ Isolation Forest with max_samples=100 and random_state=0
 
 Isolation Forest with max_samples=100 and random_state=1
 
-	True Positives: 73, False Positives: 152, True Negatives: 1824, False Negatives: 152
+	True Positives: 73, False Positives: 152, True Negatives: 1824, False Negatives: 6
 	Acurracy: 0.9231143552311436
 	Recall: 0.9240506329113924
 	Precision: 0.3244444444444444
@@ -161,7 +161,7 @@ Isolation Forest with max_samples=100 and random_state=1
 
 Isolation Forest with max_samples=100 and random_state=2
 
-	True Positives: 74, False Positives: 147, True Negatives: 1829, False Negatives: 147
+	True Positives: 74, False Positives: 147, True Negatives: 1829, False Negatives: 5
 	Acurracy: 0.9260340632603407
 	Recall: 0.9367088607594937
 	Precision: 0.334841628959276
@@ -169,7 +169,7 @@ Isolation Forest with max_samples=100 and random_state=2
 
 Isolation Forest with max_samples=100 and random_state=3
 
-	True Positives: 77, False Positives: 148, True Negatives: 1828, False Negatives: 148
+	True Positives: 77, False Positives: 148, True Negatives: 1828, False Negatives: 2
 	Acurracy: 0.927007299270073
 	Recall: 0.9746835443037974
 	Precision: 0.3422222222222222
@@ -177,7 +177,7 @@ Isolation Forest with max_samples=100 and random_state=3
 
 Isolation Forest with max_samples=100 and random_state=4
 
-	True Positives: 77, False Positives: 154, True Negatives: 1822, False Negatives: 154
+	True Positives: 77, False Positives: 154, True Negatives: 1822, False Negatives: 2
 	Acurracy: 0.9240875912408759
 	Recall: 0.9746835443037974
 	Precision: 0.3333333333333333
@@ -185,7 +185,7 @@ Isolation Forest with max_samples=100 and random_state=4
 
 Isolation Forest with max_samples=100 and random_state=5
 
-	True Positives: 76, False Positives: 148, True Negatives: 1828, False Negatives: 148
+	True Positives: 76, False Positives: 148, True Negatives: 1828, False Negatives: 3
 	Acurracy: 0.9265206812652068
 	Recall: 0.9620253164556962
 	Precision: 0.3392857142857143
@@ -193,7 +193,7 @@ Isolation Forest with max_samples=100 and random_state=5
 
 Isolation Forest with max_samples=100 and random_state=6
 
-	True Positives: 77, False Positives: 151, True Negatives: 1825, False Negatives: 151
+	True Positives: 77, False Positives: 151, True Negatives: 1825, False Negatives: 2
 	Acurracy: 0.9255474452554745
 	Recall: 0.9746835443037974
 	Precision: 0.33771929824561403
@@ -201,7 +201,7 @@ Isolation Forest with max_samples=100 and random_state=6
 
 Isolation Forest with max_samples=100 and random_state=7
 
-	True Positives: 77, False Positives: 143, True Negatives: 1833, False Negatives: 143
+	True Positives: 77, False Positives: 143, True Negatives: 1833, False Negatives: 2
 	Acurracy: 0.9294403892944039
 	Recall: 0.9746835443037974
 	Precision: 0.35
@@ -209,7 +209,7 @@ Isolation Forest with max_samples=100 and random_state=7
 
 Isolation Forest with max_samples=100 and random_state=8
 
-	True Positives: 75, False Positives: 153, True Negatives: 1823, False Negatives: 153
+	True Positives: 75, False Positives: 153, True Negatives: 1823, False Negatives: 4
 	Acurracy: 0.9236009732360098
 	Recall: 0.9493670886075949
 	Precision: 0.32894736842105265
@@ -217,7 +217,7 @@ Isolation Forest with max_samples=100 and random_state=8
 
 Isolation Forest with max_samples=100 and random_state=9
 
-	True Positives: 73, False Positives: 146, True Negatives: 1830, False Negatives: 146
+	True Positives: 73, False Positives: 146, True Negatives: 1830, False Negatives: 6
 	Acurracy: 0.9260340632603407
 	Recall: 0.9240506329113924
 	Precision: 0.3333333333333333
@@ -225,7 +225,7 @@ Isolation Forest with max_samples=100 and random_state=9
 
 Isolation Forest with max_samples=200 and random_state=0
 
-	True Positives: 39, False Positives: 131, True Negatives: 1845, False Negatives: 131
+	True Positives: 39, False Positives: 131, True Negatives: 1845, False Negatives: 40
 	Acurracy: 0.9167883211678832
 	Recall: 0.4936708860759494
 	Precision: 0.22941176470588234
@@ -233,7 +233,7 @@ Isolation Forest with max_samples=200 and random_state=0
 
 Isolation Forest with max_samples=200 and random_state=1
 
-	True Positives: 41, False Positives: 133, True Negatives: 1843, False Negatives: 133
+	True Positives: 41, False Positives: 133, True Negatives: 1843, False Negatives: 38
 	Acurracy: 0.9167883211678832
 	Recall: 0.5189873417721519
 	Precision: 0.23563218390804597
@@ -241,7 +241,7 @@ Isolation Forest with max_samples=200 and random_state=1
 
 Isolation Forest with max_samples=200 and random_state=2
 
-	True Positives: 40, False Positives: 126, True Negatives: 1850, False Negatives: 126
+	True Positives: 40, False Positives: 126, True Negatives: 1850, False Negatives: 39
 	Acurracy: 0.9197080291970803
 	Recall: 0.5063291139240507
 	Precision: 0.24096385542168675
@@ -249,7 +249,7 @@ Isolation Forest with max_samples=200 and random_state=2
 
 Isolation Forest with max_samples=200 and random_state=3
 
-	True Positives: 49, False Positives: 126, True Negatives: 1850, False Negatives: 126
+	True Positives: 49, False Positives: 126, True Negatives: 1850, False Negatives: 30
 	Acurracy: 0.9240875912408759
 	Recall: 0.620253164556962
 	Precision: 0.28
@@ -257,7 +257,7 @@ Isolation Forest with max_samples=200 and random_state=3
 
 Isolation Forest with max_samples=200 and random_state=4
 
-	True Positives: 53, False Positives: 131, True Negatives: 1845, False Negatives: 131
+	True Positives: 53, False Positives: 131, True Negatives: 1845, False Negatives: 26
 	Acurracy: 0.9236009732360098
 	Recall: 0.6708860759493671
 	Precision: 0.28804347826086957
@@ -265,7 +265,7 @@ Isolation Forest with max_samples=200 and random_state=4
 
 Isolation Forest with max_samples=200 and random_state=5
 
-	True Positives: 49, False Positives: 129, True Negatives: 1847, False Negatives: 129
+	True Positives: 49, False Positives: 129, True Negatives: 1847, False Negatives: 30
 	Acurracy: 0.9226277372262773
 	Recall: 0.620253164556962
 	Precision: 0.2752808988764045
@@ -273,7 +273,7 @@ Isolation Forest with max_samples=200 and random_state=5
 
 Isolation Forest with max_samples=200 and random_state=6
 
-	True Positives: 48, False Positives: 131, True Negatives: 1845, False Negatives: 131
+	True Positives: 48, False Positives: 131, True Negatives: 1845, False Negatives: 31
 	Acurracy: 0.9211678832116789
 	Recall: 0.6075949367088608
 	Precision: 0.2681564245810056
@@ -281,7 +281,7 @@ Isolation Forest with max_samples=200 and random_state=6
 
 Isolation Forest with max_samples=200 and random_state=7
 
-	True Positives: 36, False Positives: 127, True Negatives: 1849, False Negatives: 127
+	True Positives: 36, False Positives: 127, True Negatives: 1849, False Negatives: 43
 	Acurracy: 0.9172749391727494
 	Recall: 0.45569620253164556
 	Precision: 0.22085889570552147
@@ -289,7 +289,7 @@ Isolation Forest with max_samples=200 and random_state=7
 
 Isolation Forest with max_samples=200 and random_state=8
 
-	True Positives: 45, False Positives: 132, True Negatives: 1844, False Negatives: 132
+	True Positives: 45, False Positives: 132, True Negatives: 1844, False Negatives: 34
 	Acurracy: 0.9192214111922141
 	Recall: 0.569620253164557
 	Precision: 0.2542372881355932
@@ -297,7 +297,7 @@ Isolation Forest with max_samples=200 and random_state=8
 
 Isolation Forest with max_samples=200 and random_state=9
 
-	True Positives: 46, False Positives: 130, True Negatives: 1846, False Negatives: 130
+	True Positives: 46, False Positives: 130, True Negatives: 1846, False Negatives: 33
 	Acurracy: 0.9206812652068127
 	Recall: 0.5822784810126582
 	Precision: 0.26136363636363635
@@ -305,7 +305,7 @@ Isolation Forest with max_samples=200 and random_state=9
 
 Isolation Forest with max_samples=300 and random_state=0
 
-	True Positives: 30, False Positives: 120, True Negatives: 1856, False Negatives: 120
+	True Positives: 30, False Positives: 120, True Negatives: 1856, False Negatives: 49
 	Acurracy: 0.9177615571776155
 	Recall: 0.379746835443038
 	Precision: 0.2
@@ -313,7 +313,7 @@ Isolation Forest with max_samples=300 and random_state=0
 
 Isolation Forest with max_samples=300 and random_state=1
 
-	True Positives: 28, False Positives: 123, True Negatives: 1853, False Negatives: 123
+	True Positives: 28, False Positives: 123, True Negatives: 1853, False Negatives: 51
 	Acurracy: 0.9153284671532846
 	Recall: 0.35443037974683544
 	Precision: 0.18543046357615894
@@ -321,7 +321,7 @@ Isolation Forest with max_samples=300 and random_state=1
 
 Isolation Forest with max_samples=300 and random_state=2
 
-	True Positives: 24, False Positives: 117, True Negatives: 1859, False Negatives: 117
+	True Positives: 24, False Positives: 117, True Negatives: 1859, False Negatives: 55
 	Acurracy: 0.9163017031630171
 	Recall: 0.3037974683544304
 	Precision: 0.1702127659574468
@@ -329,7 +329,7 @@ Isolation Forest with max_samples=300 and random_state=2
 
 Isolation Forest with max_samples=300 and random_state=3
 
-	True Positives: 34, False Positives: 122, True Negatives: 1854, False Negatives: 122
+	True Positives: 34, False Positives: 122, True Negatives: 1854, False Negatives: 45
 	Acurracy: 0.918734793187348
 	Recall: 0.43037974683544306
 	Precision: 0.21794871794871795
@@ -337,7 +337,7 @@ Isolation Forest with max_samples=300 and random_state=3
 
 Isolation Forest with max_samples=300 and random_state=4
 
-	True Positives: 38, False Positives: 120, True Negatives: 1856, False Negatives: 120
+	True Positives: 38, False Positives: 120, True Negatives: 1856, False Negatives: 41
 	Acurracy: 0.921654501216545
 	Recall: 0.4810126582278481
 	Precision: 0.24050632911392406
@@ -345,7 +345,7 @@ Isolation Forest with max_samples=300 and random_state=4
 
 Isolation Forest with max_samples=300 and random_state=5
 
-	True Positives: 39, False Positives: 123, True Negatives: 1853, False Negatives: 123
+	True Positives: 39, False Positives: 123, True Negatives: 1853, False Negatives: 40
 	Acurracy: 0.9206812652068127
 	Recall: 0.4936708860759494
 	Precision: 0.24074074074074073
@@ -353,7 +353,7 @@ Isolation Forest with max_samples=300 and random_state=5
 
 Isolation Forest with max_samples=300 and random_state=6
 
-	True Positives: 30, False Positives: 122, True Negatives: 1854, False Negatives: 122
+	True Positives: 30, False Positives: 122, True Negatives: 1854, False Negatives: 49
 	Acurracy: 0.9167883211678832
 	Recall: 0.379746835443038
 	Precision: 0.19736842105263158
@@ -361,7 +361,7 @@ Isolation Forest with max_samples=300 and random_state=6
 
 Isolation Forest with max_samples=300 and random_state=7
 
-	True Positives: 25, False Positives: 115, True Negatives: 1861, False Negatives: 115
+	True Positives: 25, False Positives: 115, True Negatives: 1861, False Negatives: 54
 	Acurracy: 0.9177615571776155
 	Recall: 0.31645569620253167
 	Precision: 0.17857142857142858
@@ -369,7 +369,7 @@ Isolation Forest with max_samples=300 and random_state=7
 
 Isolation Forest with max_samples=300 and random_state=8
 
-	True Positives: 28, False Positives: 119, True Negatives: 1857, False Negatives: 119
+	True Positives: 28, False Positives: 119, True Negatives: 1857, False Negatives: 51
 	Acurracy: 0.9172749391727494
 	Recall: 0.35443037974683544
 	Precision: 0.19047619047619047
@@ -377,7 +377,7 @@ Isolation Forest with max_samples=300 and random_state=8
 
 Isolation Forest with max_samples=300 and random_state=9
 
-	True Positives: 32, False Positives: 120, True Negatives: 1856, False Negatives: 120
+	True Positives: 32, False Positives: 120, True Negatives: 1856, False Negatives: 47
 	Acurracy: 0.918734793187348
 	Recall: 0.4050632911392405
 	Precision: 0.21052631578947367
@@ -385,7 +385,7 @@ Isolation Forest with max_samples=300 and random_state=9
 
 Isolation Forest with max_samples=400 and random_state=0
 
-	True Positives: 22, False Positives: 110, True Negatives: 1866, False Negatives: 110
+	True Positives: 22, False Positives: 110, True Negatives: 1866, False Negatives: 57
 	Acurracy: 0.918734793187348
 	Recall: 0.27848101265822783
 	Precision: 0.16666666666666666
@@ -393,7 +393,7 @@ Isolation Forest with max_samples=400 and random_state=0
 
 Isolation Forest with max_samples=400 and random_state=1
 
-	True Positives: 27, False Positives: 117, True Negatives: 1859, False Negatives: 117
+	True Positives: 27, False Positives: 117, True Negatives: 1859, False Negatives: 52
 	Acurracy: 0.9177615571776155
 	Recall: 0.34177215189873417
 	Precision: 0.1875
@@ -401,7 +401,7 @@ Isolation Forest with max_samples=400 and random_state=1
 
 Isolation Forest with max_samples=400 and random_state=2
 
-	True Positives: 25, False Positives: 113, True Negatives: 1863, False Negatives: 113
+	True Positives: 25, False Positives: 113, True Negatives: 1863, False Negatives: 54
 	Acurracy: 0.918734793187348
 	Recall: 0.31645569620253167
 	Precision: 0.18115942028985507
@@ -409,7 +409,7 @@ Isolation Forest with max_samples=400 and random_state=2
 
 Isolation Forest with max_samples=400 and random_state=3
 
-	True Positives: 24, False Positives: 115, True Negatives: 1861, False Negatives: 115
+	True Positives: 24, False Positives: 115, True Negatives: 1861, False Negatives: 55
 	Acurracy: 0.9172749391727494
 	Recall: 0.3037974683544304
 	Precision: 0.17266187050359713
@@ -417,7 +417,7 @@ Isolation Forest with max_samples=400 and random_state=3
 
 Isolation Forest with max_samples=400 and random_state=4
 
-	True Positives: 23, False Positives: 108, True Negatives: 1868, False Negatives: 108
+	True Positives: 23, False Positives: 108, True Negatives: 1868, False Negatives: 56
 	Acurracy: 0.9201946472019464
 	Recall: 0.2911392405063291
 	Precision: 0.17557251908396945
@@ -425,7 +425,7 @@ Isolation Forest with max_samples=400 and random_state=4
 
 Isolation Forest with max_samples=400 and random_state=5
 
-	True Positives: 25, False Positives: 111, True Negatives: 1865, False Negatives: 111
+	True Positives: 25, False Positives: 111, True Negatives: 1865, False Negatives: 54
 	Acurracy: 0.9197080291970803
 	Recall: 0.31645569620253167
 	Precision: 0.18382352941176472
@@ -433,7 +433,7 @@ Isolation Forest with max_samples=400 and random_state=5
 
 Isolation Forest with max_samples=400 and random_state=6
 
-	True Positives: 25, False Positives: 117, True Negatives: 1859, False Negatives: 117
+	True Positives: 25, False Positives: 117, True Negatives: 1859, False Negatives: 54
 	Acurracy: 0.9167883211678832
 	Recall: 0.31645569620253167
 	Precision: 0.176056338028169
@@ -441,7 +441,7 @@ Isolation Forest with max_samples=400 and random_state=6
 
 Isolation Forest with max_samples=400 and random_state=7
 
-	True Positives: 23, False Positives: 105, True Negatives: 1871, False Negatives: 105
+	True Positives: 23, False Positives: 105, True Negatives: 1871, False Negatives: 56
 	Acurracy: 0.921654501216545
 	Recall: 0.2911392405063291
 	Precision: 0.1796875
@@ -449,7 +449,7 @@ Isolation Forest with max_samples=400 and random_state=7
 
 Isolation Forest with max_samples=400 and random_state=8
 
-	True Positives: 24, False Positives: 110, True Negatives: 1866, False Negatives: 110
+	True Positives: 24, False Positives: 110, True Negatives: 1866, False Negatives: 55
 	Acurracy: 0.9197080291970803
 	Recall: 0.3037974683544304
 	Precision: 0.1791044776119403
@@ -457,7 +457,7 @@ Isolation Forest with max_samples=400 and random_state=8
 
 Isolation Forest with max_samples=400 and random_state=9
 
-	True Positives: 25, False Positives: 114, True Negatives: 1862, False Negatives: 114
+	True Positives: 25, False Positives: 114, True Negatives: 1862, False Negatives: 54
 	Acurracy: 0.9182481751824818
 	Recall: 0.31645569620253167
 	Precision: 0.17985611510791366

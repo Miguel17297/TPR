@@ -13,7 +13,7 @@ def feature_analysis(bot):
     features_trip = np.loadtxt("data/tripadvisor.dat")
     features_tb = np.loadtxt("data/taobao.dat")
 
-    results_path = os.path.join(os.path.dirname(os.getcwd()), "results", f"bot{bot}")
+    results_path = os.path.join(os.path.join(os.getcwd()), "results", f"bot{bot}")
 
     if not os.path.exists(results_path):
         os.makedirs(results_path)
@@ -55,8 +55,9 @@ def feature_analysis(bot):
             col = idx % num_cols
             axes[row, col].scatter(features[:, i], features[:, j], c=labels.flatten(), cmap='viridis')
             axes[row, col].set_title(f'{f_labels[i]} vs {f_labels[j]}')
-            axes[row, col].set_xlim(0,0.0002)
-            axes[row, col].set_ylim(0,0.00003)
+            axes[row, col].ticklabel_format(axis='x', style='sci')
+            axes[row, col].set_xlim(0,0.0001)
+            axes[row, col].set_ylim(0,0.003)
 
         # Adjust layout to prevent overlapping
         plt.tight_layout()
@@ -68,6 +69,45 @@ def feature_analysis(bot):
         plt.savefig(f_name)
 
 
+def feature_analysis_extended(bot):
+
+    features_bot = np.loadtxt(f'data/bot{bot}.dat')
+    features_linked = np.loadtxt("data/linkedIn.dat")
+    features_trip = np.loadtxt("data/tripadvisor.dat")
+    features_tb = np.loadtxt("data/taobao.dat")
+
+    results_path = os.path.join(os.path.join(os.getcwd()), "results", f"bot{bot}")
+
+    if not os.path.exists(results_path):
+        os.makedirs(results_path)
+
+    # data analysis
+    features_normal = np.vstack((features_linked, features_trip, features_tb))
+    features = np.vstack((features_normal, features_bot))
+    labels_normal = np.ones((len(features_normal), 1)) * 1
+    labels_bot = np.ones((len(features_bot), 1)) * -1
+
+    labels = np.vstack((labels_normal, labels_bot))
+
+    obs, n_fea = features.shape
+
+    '''i need to make all comvbination of features and plot them'''
+    comb = [*(itertools.combinations(range(n_fea), 2))]
+
+    f_labels = np.loadtxt("data/feature_labels.csv",
+                          delimiter=",", dtype=str)
+
+
+    for idx, (i, j) in enumerate(comb):
+        plt.scatter(features[:, i], features[:, j], c=labels.flatten(), cmap='viridis')
+        plt.title(f'{f_labels[i]} vs {f_labels[j]}')
+        plt.ticklabel_format(axis='x', style='sci')
+        plt.xlim(0,0.00008)
+        plt.ylim(0,0.00008)
+
+        plt.show()
+
+
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Anomaly detection')
     parser.add_argument('-b', '--bot', type=int, help='Bot Level', choices=[1, 2, 3], default=3)
@@ -75,3 +115,4 @@ if __name__ == '__main__':
 
     bot = args.bot
     feature_analysis(bot)
+    #feature_analysis_extended(bot)
