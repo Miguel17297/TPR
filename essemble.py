@@ -30,7 +30,7 @@ def ensemble(bot):
     
     features_bot = np.loadtxt(f'bot{bot}.dat')
 
-    train_bot, test_bot = dataset_division(features_bot)
+    train_bot, test_bot = dataset_division(features_bot, 0.5)
     train_normal = np.vstack((train_linked, train_trip, train_taobao))
 
     test_normal = np.vstack((test_linked, test_trip, test_taobao))

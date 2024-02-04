@@ -76,14 +76,14 @@ def validate_model(model_predictions, real_values):
     results = np.array([tp, fp, tn, fn])
     results = results.reshape(2, 2)
 
-    seaborn.set(font_scale=1.4)
-    ax = seaborn.heatmap(results , annot=True, cmap="YlGnBu", cbar_kws={'label': 'Scale'})
-
-    ax.set_xticklabels(labels)
-    ax.set_yticklabels(labels)
-
-    ax.set(xlabel="Real Values", ylabel="Predicted Values")
-    plt.show()
+    # seaborn.set(font_scale=1.4)
+    # ax = seaborn.heatmap(results , annot=True, cmap="YlGnBu", cbar_kws={'label': 'Scale'})
+    #
+    # ax.set_xticklabels(labels)
+    # ax.set_yticklabels(labels)
+    #
+    # ax.set(xlabel="Real Values", ylabel="Predicted Values")
+    # plt.show()
 
     return f1_score
 
