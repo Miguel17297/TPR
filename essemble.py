@@ -95,11 +95,10 @@ def ensemble(bot):
         n_obs, _ = test_data.shape
 
         for i in range(n_obs):
+
             if ocsvm_res[i] == -1 and poly_res[i] == -1 and isf_res[i] == -1:
                 essemble_res[i] = -1
-            elif rbf_res[i] == 1 and sm_res[i] == 1:
-                essemble_res[i] = 1
-                
+
         validate_model(essemble_res.reshape(-1, 1), test_labels)
         
     sys.stdout = original_stdout
