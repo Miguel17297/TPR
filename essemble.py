@@ -7,7 +7,9 @@ from models.utils import dataset_division,validate_model
 import os
 import sys
 
-BEST_NU = 0.4
+BEST_NU_1 = 0.1
+BEST_NU_2 = 0.4
+BEST_NU_3 = 0.8
 BEST_THRESHOLD = 3
 BEST_MS = 400
 BEST_RS = 0
@@ -44,28 +46,37 @@ def ensemble(bot):
     
     pca_27= PCA(n_components=27)
     pca_19 = PCA(n_components=19)
+    pca_16 = PCA(n_components=16)
+    pca_26 = PCA(n_components=26)
 
     train_normal_pca_27= pca_27.fit_transform(train_normal)
     test_normal_pca_27 = pca_27.transform(test_data)
+    
 
     train_normal_pca_19= pca_19.fit_transform(train_normal)
     test_normal_pca_19 = pca_19.transform(test_data)
+    
+    train_normal_pca_16= pca_16.fit_transform(train_normal)
+    test_normal_pca_16 = pca_16.transform(test_data)
+    
+    train_normal_pca_26= pca_26.fit_transform(train_normal)
+    test_normal_pca_26 = pca_26.transform(test_data)
 
     sm = StatisticalModel(BEST_THRESHOLD)
     sm.train(train_normal)
     sm_res = sm.predict(test_data)
 
-    ocsvm = OneClassSVM("linear", BEST_NU)
+    ocsvm = OneClassSVM("linear", BEST_NU_2)
     ocsvm.train(train_normal_pca_19)
     ocsvm_res = ocsvm.predict(test_normal_pca_19)
 
-    rbf_ocsvm = OneClassSVM("rbf", BEST_NU)
-    rbf_ocsvm.train(train_normal_pca_19)
-    rbf_res = rbf_ocsvm.predict(test_normal_pca_19)
+    rbf_ocsvm = OneClassSVM("rbf", BEST_NU_1)
+    rbf_ocsvm.train(train_normal_pca_16)
+    rbf_res = rbf_ocsvm.predict(test_normal_pca_16)
 
-    poly_ocsvm = OneClassSVM("poly", BEST_NU)
-    poly_ocsvm.train(train_normal_pca_19)
-    poly_res = poly_ocsvm.predict(test_normal_pca_19)
+    poly_ocsvm = OneClassSVM("poly", BEST_NU_3)
+    poly_ocsvm.train(train_normal_pca_26)
+    poly_res = poly_ocsvm.predict(test_normal_pca_26)
 
     isf = IsolationForest(BEST_MS, BEST_RS)
     isf.train(train_normal_pca_27)
@@ -84,8 +95,10 @@ def ensemble(bot):
         n_obs, _ = test_data.shape
 
         for i in range(n_obs):
-            if ocsvm_res[i] == -1 and rbf_res[i] == -1 and poly_res[i] == -1 and isf_res[i] == -1:
+            if ocsvm_res[i] == -1 and poly_res[i] == -1 and isf_res[i] == -1:
                 essemble_res[i] = -1
+            elif rbf_res[i] == 1 and sm_res[i] == 1:
+                essemble_res[i] = 1
                 
         validate_model(essemble_res.reshape(-1, 1), test_labels)
         
